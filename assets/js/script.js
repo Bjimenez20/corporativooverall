@@ -315,7 +315,7 @@ jQuery(function ($) {
 
         if ($('.finance-carousel').length) {
             $('.finance-carousel').owlCarousel({
-                loop:true,
+                loop:false,
                 autoplay:true,
                 autoplayTimeout: 3000,
                 margin:20,
