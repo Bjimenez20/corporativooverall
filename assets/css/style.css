@@ -1448,19 +1448,30 @@ select {
   transition-delay: 0s, 0s, 0.3s;
 }
 
-.header-section .navbar .navbar-collapse .navbar-nav li .dropdown-menu {
+.header-section .navbar .navbar-collapse .navbar-nav li .dropdown-menu.megamenu {
   top: 55px;
-  left: -25px;
-  min-width: 200px;
-  background-color: #FFFFFF;
-  padding: 10px 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+  min-width: 600px;
+  /* Ajustable */
+  background-color: #ffffff;
+  padding: 20px;
   display: block;
   visibility: hidden;
   opacity: 0;
   border: 0;
-  transform: translateY(-2em);
+  position: absolute;
   z-index: -1;
   transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header-section .navbar .navbar-collapse .navbar-nav li:hover .dropdown-menu.megamenu {
+  visibility: visible;
+  opacity: 1;
+  z-index: 999;
+  transform: translateX(-50%) translateY(0);
 }
 
 .header-section .navbar .navbar-collapse .navbar-nav li .dropdown-menu li {
@@ -1468,7 +1479,7 @@ select {
   font-size: 14px;
   font-weight: 500;
   border-bottom: 1px solid rgba(97, 109, 126, 0.12);
-  margin: 0 25px;
+  margin: 1px;
   padding: 0 5px;
   -webkit-transition: 0.5s;
   -khtml-transition: 0.5s;
@@ -1526,23 +1537,21 @@ select {
 
 .header-section .navbar .navbar-collapse .navbar-nav li .dropdown-menu li:hover .sub-dropdown {
   opacity: 1;
-  right: -136%;
+  right: 100%;
 }
 
 .header-section .navbar .navbar-collapse .navbar-nav li .dropdown-menu .sub-dropdown {
   position: absolute;
   top: 0;
-  right: -120%;
+  left: 100%;
   width: 180px;
   background-color: #FFFFFF;
   opacity: 0;
   padding: 10px 0;
-  -webkit-transition: 0.5s;
-  -khtml-transition: 0.5s;
-  -moz-transition: 0.5s;
-  -ms-transition: 0.5s;
-  -o-transition: 0.5s;
   transition: 0.5s;
+  z-index: 10;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  /* Opcional para mejorar la separación visual */
 }
 
 .header-section .navbar .navbar-collapse .navbar-nav li #search-bar {
