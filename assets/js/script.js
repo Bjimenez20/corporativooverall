@@ -315,7 +315,7 @@ jQuery(function ($) {
 
         if ($('.finance-carousel').length) {
             $('.finance-carousel').owlCarousel({
-                loop:false,
+                loop:true,
                 autoplay:true,
                 autoplayTimeout: 3000,
                 margin:20,
@@ -446,12 +446,12 @@ jQuery(function ($) {
                             {"featureType": "administrative","elementType": "geometry.stroke","stylers": [{"color": "#fefefe"},{"lightness": 17},{"weight": 1.2}]},
                             {"featureType": "landscape","elementType": "geometry","stylers": [{"color": "#f4f4f4"},{"lightness": 20}]},
                             {"featureType": "poi","elementType": "geometry","stylers": [{"color": "#f4f4f4"},{"lightness": 21}]},
-                            {"featureType": "poi.park","elementType": "geometry","stylers": [{"color": "#48c7ec"},{"lightness": 21}]},
+                            {"featureType": "poi.park","elementType": "geometry","stylers": [{"color": "#00A3E1"},{"lightness": 21}]},
                             {"featureType": "road.highway","elementType": "geometry.fill","stylers": [{"color": "#ffffff"},{"lightness": 17}]},
                             {"featureType": "road.highway","elementType": "geometry.stroke","stylers": [{"color": "#ffffff"},{"lightness": 29},{"weight": 0.2}]},
                             {"featureType": "road.arterial","elementType": "geometry","stylers": [{"color": "#ffffff"},{"lightness": 18}]},
                             {"featureType": "road.local","elementType": "geometry","stylers": [{"color": "#ffffff"},{"lightness": 16}]},
-                            {"featureType": "transit","elementType": "geometry","stylers": [{"color": "#48c7ec"},{"lightness": 19}]},
+                            {"featureType": "transit","elementType": "geometry","stylers": [{"color": "#00A3E1"},{"lightness": 19}]},
                             {"featureType": "water","elementType": "geometry","stylers": [{"color": "#a3ccff"},{"lightness": 17}]}]};
 
                             // Get the HTML DOM element that will contain your map 
