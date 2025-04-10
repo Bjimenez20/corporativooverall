@@ -898,6 +898,7 @@ select {
 
 .header-section .top-bar .header-left-bar .contact-wrapper {
   display: inline-block;
+  text-align: justify;
 }
 
 .header-section .top-bar .header-left-bar .contact-wrapper li {
@@ -9287,12 +9288,12 @@ select {
 
 @media only screen and (max-width: 767px) {
   .homePageOne .header-section .top-bar .header-left-bar .contact-wrapper li {
-    font-size: 14px;
+    font-size: 15px;
   }
 }
 
 .homePageOne .header-section .top-bar .header-right-bar {
-  margin-bottom: -20px;
+  margin-bottom: -120px;
 }
 
 @media only screen and (max-width: 991px) {
