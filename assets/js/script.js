@@ -25,16 +25,32 @@ jQuery(function ($) {
         var offcanvasmenu = $("#offcanvas-menu");
         var closemenu = $(".close-menu");
 
+        // Abre el menú lateral
         menutoggle.on("click", function () {
             offcanvasmenu.addClass("toggled");
             return false;
         });
 
+        // Cierra el menú lateral
         closemenu.on("click", function () {
             offcanvasmenu.removeClass("toggled");
             return false;
         });
-    }());
+
+        // Manejo de submenús tipo dropdown (Servicios, Noticias, etc.)
+        $("#offcanvas-menu .dropdown > a").on("click", function (e) {
+            e.preventDefault(); // Evita que el enlace navegue
+
+            var $submenu = $(this).next("ul");
+
+            // Alterna el submenú actual (muestra/oculta)
+            $submenu.slideToggle();
+
+            // Cierra los demás submenús si se quiere comportamiento tipo acordeón
+            $("#offcanvas-menu .dropdown > a").not(this).next("ul").slideUp();
+        });
+    })();
+
 
 
 
