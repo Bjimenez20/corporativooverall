@@ -890,6 +890,7 @@ select {
   }
 }
 
+
 @media only screen and (max-width: 767px) {
   .header-section .top-bar {
     padding: 10px 0;

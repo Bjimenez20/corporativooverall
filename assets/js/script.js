@@ -149,6 +149,7 @@ jQuery(function ($) {
         gridheight: 815,
         spinner: "off",
         hideTimerBar: "on",
+        delay: 10000,
         navigation: {
             arrows: {
                 enable: true,
@@ -159,6 +160,7 @@ jQuery(function ($) {
             }
         }
     });
+
 
 
     jQuery('#rev_slider_2').show().revolution({
@@ -354,7 +356,7 @@ jQuery(function ($) {
         $('.finance-carousel').owlCarousel({
             loop: true,
             autoplay: true,
-            autoplayTimeout: 3000,
+            autoplayTimeout: 9000,
             margin: 20,
             nav: true,
             dots: false,
