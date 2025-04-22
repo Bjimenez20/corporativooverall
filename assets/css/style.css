@@ -2970,7 +2970,7 @@ select {
   width: 73px;
   height: 73px;
   text-align: center;
-  border: 4px solid #00468e;
+  border: 4px solid #fff;
 }
 
 @media only screen and (max-width: 599px) {
@@ -3003,7 +3003,7 @@ select {
   font-size: 48px;
   font-weight: 600;
   line-height: 24px;
-  color: #00468e;
+  color: #fff;
   margin-bottom: 20px;
 }
 
