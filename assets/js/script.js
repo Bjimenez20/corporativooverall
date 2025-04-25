@@ -380,6 +380,34 @@ jQuery(function ($) {
     }
 
 
+    if ($('.finance-carousel-search').length) {
+        $('.finance-carousel-search').owlCarousel({
+            loop: true,
+            autoplay: true,
+            autoplayTimeout: 9000,
+            margin: 20,
+            nav: true,
+            dots: false,
+            navText: ["<i class='fa fa-chevron-left'></i>", "<i class='fa fa-chevron-right'></i>"],
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: true,
+                    dots: false,
+                },
+                600: {
+                    items: 2,
+                    nav: true,
+                    dots: false,
+                },
+                1000: {
+                    items: 1
+                }
+            }
+        });
+    }
+
+
 
 
 

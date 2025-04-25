@@ -4190,6 +4190,10 @@ select {
   margin-top: 90px;
 }
 
+.link2{
+  margin-top: 50px;
+}
+
 @media only screen and (max-width: 991px) {
   .team-section .link {
     margin-top: 50px;
@@ -6565,6 +6569,149 @@ select {
 
 .finance-service-section .finance-carousel .owl-nav .owl-prev i,
 .finance-service-section .finance-carousel .owl-nav .owl-next i {
+  font-size: 12px;
+  color: #00A3E1;
+}
+
+
+.finance-service-section .finance-carousel-search .finance-wrapper {
+  position: relative;
+  box-shadow: 0 0 10px #e0e0e0;
+  margin: 35px 5px 5px 5px;
+}
+
+.finance-service-section .finance-carousel-search .finance-wrapper:hover .border .border-one,
+.finance-service-section .finance-carousel-search .finance-wrapper:hover .border .border-two,
+.finance-service-section .finance-carousel-search .finance-wrapper:hover .border .border-three,
+.finance-service-section .finance-carousel-search .finance-wrapper:hover .border .border-four {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.finance-service-section .finance-carousel-search .finance-wrapper .icon {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  background: #00A3E1;
+  border-radius: 50%;
+  margin: 0 auto;
+  transform: translateY(-33px);
+  box-shadow: 0 2px 10px #cccccc;
+  z-index: 5;
+}
+
+.finance-service-section .finance-carousel-search .finance-wrapper .icon img {
+  width: auto;
+  padding: 15px 0;
+  margin: 0 auto;
+}
+
+.finance-service-section .finance-carousel-search .finance-wrapper .wrapper-content h4 {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 26px;
+  margin: -17px 0 7px;
+}
+
+.finance-service-section .finance-carousel-search .finance-wrapper .wrapper-content h4 a {
+  color: #222222;
+}
+
+.finance-service-section .finance-carousel-search .finance-wrapper .wrapper-content h4 a:hover {
+  color: #00A3E1;
+}
+
+.finance-service-section .finance-carousel-search .finance-wrapper .wrapper-content p {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 22px;
+  color: #8a8a8a;
+  padding: 0 40px 28px;
+  margin-bottom: 0;
+}
+
+.finance-service-section .finance-carousel-search .finance-wrapper .border .border-one,
+.finance-service-section .finance-carousel-search .finance-wrapper .border .border-two,
+.finance-service-section .finance-carousel-search .finance-wrapper .border .border-three,
+.finance-service-section .finance-carousel-search .finance-wrapper .border .border-four {
+  position: absolute;
+  background: #00A3E1;
+  opacity: 0;
+  -webkit-transition: 0.5s;
+  -khtml-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.finance-service-section .finance-carousel-search .finance-wrapper .border .border-one {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  transform: scale(0, 1);
+}
+
+.finance-service-section .finance-carousel-search .finance-wrapper .border .border-two {
+  top: 0;
+  right: 0;
+  width: 1px;
+  height: 100%;
+  transform: scale(1, 0);
+}
+
+.finance-service-section .finance-carousel-search .finance-wrapper .border .border-three {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  transform: scale(0, 1);
+}
+
+.finance-service-section .finance-carousel-search .finance-wrapper .border .border-four {
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 100%;
+  transform: scale(1, 0);
+}
+
+.finance-service-section .finance-carousel-search .owl-nav {
+  margin-top: 40px;
+}
+
+@media only screen and (max-width: 767px) {
+  .finance-service-section .finance-carousel-search .owl-nav {
+    margin-top: 20px;
+  }
+}
+
+.finance-service-section .finance-carousel-search .owl-nav .owl-prev,
+.finance-service-section .finance-carousel-search .owl-nav .owl-next {
+  width: 34px;
+  height: 34px;
+  line-height: 30px;
+  border: 2px solid #00A3E1;
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  -webkit-transition: 0.5s;
+  -khtml-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.finance-service-section .finance-carousel-search .owl-nav .owl-prev:hover,
+.finance-service-section .finance-carousel-search .owl-nav .owl-next:hover {
+  background: #051c2c;
+  border: 2px solid #051c2c;
+}
+
+.finance-service-section .finance-carousel-search .owl-nav .owl-prev i,
+.finance-service-section .finance-carousel-search .owl-nav .owl-next i {
   font-size: 12px;
   color: #00A3E1;
 }
@@ -9641,6 +9788,117 @@ select {
   transition-delay: 0s;
 }
 
+
+
+
+.homePageOne .finance-service-section .finance-carousel-search .finance-wrapper {
+  box-shadow: none;
+  border: 1px solid #e7e8e8;
+  border-bottom: 0;
+}
+
+.homePageOne .finance-service-section .finance-carousel-search .finance-wrapper:hover .wrapper-content {
+  position: relative;
+  z-index: 5;
+}
+
+.homePageOne .finance-service-section .finance-carousel-search .finance-wrapper:hover .wrapper-content h4 a {
+  color: #FFFFFF;
+}
+
+.homePageOne .finance-service-section .finance-carousel-search .finance-wrapper:hover .wrapper-content h4 a:hover {
+  color: #00A3E1;
+}
+
+.homePageOne .finance-service-section .finance-carousel-search .finance-wrapper:hover .wrapper-content p {
+  color: #FFFFFF;
+}
+
+.homePageOne .finance-service-section .finance-carousel-search .finance-wrapper:hover .hover .hover-one,
+.homePageOne .finance-service-section .finance-carousel-search .finance-wrapper:hover .hover .hover-two,
+.homePageOne .finance-service-section .finance-carousel-search .finance-wrapper:hover .hover .hover-three,
+.homePageOne .finance-service-section .finance-carousel-search .finance-wrapper:hover .hover .hover-four {
+  opacity: 1;
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transform: scale(1);
+}
+
+.homePageOne .finance-service-section .finance-carousel-search .finance-wrapper .icon {
+  background: transparent;
+  box-shadow: none;
+  transform: translateY(0);
+  margin: 30px auto 10px;
+}
+
+.homePageOne .finance-service-section .finance-carousel-search .finance-wrapper .wrapper-content {
+  border-bottom: 4px solid #00A3E1;
+}
+
+.homePageOne .finance-service-section .finance-carousel-search .finance-wrapper .wrapper-content h4 {
+  margin: 0 0 15px;
+}
+
+.homePageOne .finance-service-section .finance-carousel-search .finance-wrapper .wrapper-content p {
+  padding: 0 35px 38px;
+}
+
+.homePageOne .finance-service-section .finance-carousel-search .finance-wrapper .hover .hover-one,
+.homePageOne .finance-service-section .finance-carousel-search .finance-wrapper .hover .hover-two,
+.homePageOne .finance-service-section .finance-carousel-search .finance-wrapper .hover .hover-three,
+.homePageOne .finance-service-section .finance-carousel-search .finance-wrapper .hover .hover-four {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 25%;
+  background: #051c2c;
+  opacity: 0;
+  z-index: 1;
+  -webkit-transition: all 0.35s ease;
+  -o-transition: all 0.35s ease;
+  -moz-transition: all 0.35s ease;
+  transition: all 0.35s ease;
+  -webkit-transform: scaleY(0);
+  -moz-transform: scaleY(0);
+  -ms-transform: scaleY(0);
+  -o-transform: scaleY(0);
+  transform: scaleY(0);
+}
+
+.homePageOne .finance-service-section .finance-carousel-search .finance-wrapper .hover .hover-one {
+  top: 0;
+  -webkit-transition-delay: 0.25s;
+  -moz-transition-delay: 0.25s;
+  -o-transition-delay: 0.25s;
+  transition-delay: 0.25s;
+}
+
+.homePageOne .finance-service-section .finance-carousel-search .finance-wrapper .hover .hover-two {
+  top: 25%;
+  -webkit-transition-delay: 0.105s;
+  -moz-transition-delay: 0.105s;
+  -o-transition-delay: 0.105s;
+  transition-delay: 0.105s;
+}
+
+.homePageOne .finance-service-section .finance-carousel-search .finance-wrapper .hover .hover-three {
+  top: 49%;
+  -webkit-transition-delay: 0.105s;
+  -moz-transition-delay: 0.105s;
+  -o-transition-delay: 0.105s;
+  transition-delay: 0.105s;
+}
+
+.homePageOne .finance-service-section .finance-carousel-search .finance-wrapper .hover .hover-four {
+  top: 74%;
+  -webkit-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
+}
+
 .homePageOne .news-section .link .btn,
 .homePageOne .project-section .link .btn {
   border-radius: 0;
@@ -9970,6 +10228,116 @@ select {
 }
 
 .homePageTwo .finance-service-section .finance-carousel .finance-wrapper .hover .hover-four {
+  top: 74%;
+  -webkit-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
+}
+
+
+
+.homePageTwo .finance-service-section .finance-carousel-search .finance-wrapper {
+  box-shadow: none;
+  border: 1px solid #e7e8e8;
+  border-bottom: 0;
+}
+
+.homePageTwo .finance-service-section .finance-carousel-search .finance-wrapper:hover .wrapper-content {
+  position: relative;
+  z-index: 5;
+}
+
+.homePageTwo .finance-service-section .finance-carousel-search .finance-wrapper:hover .wrapper-content h4 a {
+  color: #FFFFFF;
+}
+
+.homePageTwo .finance-service-section .finance-carousel-search .finance-wrapper:hover .wrapper-content h4 a:hover {
+  color: #00A3E1;
+}
+
+.homePageTwo .finance-service-section .finance-carousel-search .finance-wrapper:hover .wrapper-content p {
+  color: #FFFFFF;
+}
+
+.homePageTwo .finance-service-section .finance-carousel-search .finance-wrapper:hover .hover .hover-one,
+.homePageTwo .finance-service-section .finance-carousel-search .finance-wrapper:hover .hover .hover-two,
+.homePageTwo .finance-service-section .finance-carousel-search .finance-wrapper:hover .hover .hover-three,
+.homePageTwo .finance-service-section .finance-carousel-search .finance-wrapper:hover .hover .hover-four {
+  opacity: 1;
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transform: scale(1);
+}
+
+.homePageTwo .finance-service-section .finance-carousel-search .finance-wrapper .icon {
+  background: transparent;
+  box-shadow: none;
+  transform: translateY(0);
+  margin: 30px auto 10px;
+}
+
+.homePageTwo .finance-service-section .finance-carousel-search .finance-wrapper .wrapper-content {
+  border-bottom: 4px solid #00A3E1;
+}
+
+.homePageTwo .finance-service-section .finance-carousel-search .finance-wrapper .wrapper-content h4 {
+  margin: 0 0 15px;
+}
+
+.homePageTwo .finance-service-section .finance-carousel-search .finance-wrapper .wrapper-content p {
+  padding: 0 35px 38px;
+}
+
+.homePageTwo .finance-service-section .finance-carousel-search .finance-wrapper .hover .hover-one,
+.homePageTwo .finance-service-section .finance-carousel-search .finance-wrapper .hover .hover-two,
+.homePageTwo .finance-service-section .finance-carousel-search .finance-wrapper .hover .hover-three,
+.homePageTwo .finance-service-section .finance-carousel-search .finance-wrapper .hover .hover-four {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 25%;
+  background: #051c2c;
+  opacity: 0;
+  z-index: 1;
+  -webkit-transition: all 0.35s ease;
+  -o-transition: all 0.35s ease;
+  -moz-transition: all 0.35s ease;
+  transition: all 0.35s ease;
+  -webkit-transform: scaleY(0);
+  -moz-transform: scaleY(0);
+  -ms-transform: scaleY(0);
+  -o-transform: scaleY(0);
+  transform: scaleY(0);
+}
+
+.homePageTwo .finance-service-section .finance-carousel-search .finance-wrapper .hover .hover-one {
+  top: 0;
+  -webkit-transition-delay: 0.25s;
+  -moz-transition-delay: 0.25s;
+  -o-transition-delay: 0.25s;
+  transition-delay: 0.25s;
+}
+
+.homePageTwo .finance-service-section .finance-carousel-search .finance-wrapper .hover .hover-two {
+  top: 25%;
+  -webkit-transition-delay: 0.105s;
+  -moz-transition-delay: 0.105s;
+  -o-transition-delay: 0.105s;
+  transition-delay: 0.105s;
+}
+
+.homePageTwo .finance-service-section .finance-carousel-search .finance-wrapper .hover .hover-three {
+  top: 49%;
+  -webkit-transition-delay: 0.105s;
+  -moz-transition-delay: 0.105s;
+  -o-transition-delay: 0.105s;
+  transition-delay: 0.105s;
+}
+
+.homePageTwo .finance-service-section .finance-carousel-search .finance-wrapper .hover .hover-four {
   top: 74%;
   -webkit-transition-delay: 0s;
   -moz-transition-delay: 0s;
@@ -10740,6 +11108,115 @@ select {
 }
 
 .aboutPage .finance-service-section .finance-carousel .finance-wrapper .hover .hover-four {
+  top: 74%;
+  -webkit-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
+}
+
+
+.aboutPage .finance-service-section .finance-carousel-search .finance-wrapper {
+  box-shadow: none;
+  border: 1px solid #e7e8e8;
+  border-bottom: 0;
+}
+
+.aboutPage .finance-service-section .finance-carousel-search .finance-wrapper:hover .wrapper-content {
+  position: relative;
+  z-index: 5;
+}
+
+.aboutPage .finance-service-section .finance-carousel-search .finance-wrapper:hover .wrapper-content h4 a {
+  color: #FFFFFF;
+}
+
+.aboutPage .finance-service-section .finance-carousel-search .finance-wrapper:hover .wrapper-content h4 a:hover {
+  color: #00A3E1;
+}
+
+.aboutPage .finance-service-section .finance-carousel-search .finance-wrapper:hover .wrapper-content p {
+  color: #FFFFFF;
+}
+
+.aboutPage .finance-service-section .finance-carousel-search .finance-wrapper:hover .hover .hover-one,
+.aboutPage .finance-service-section .finance-carousel-search .finance-wrapper:hover .hover .hover-two,
+.aboutPage .finance-service-section .finance-carousel-search .finance-wrapper:hover .hover .hover-three,
+.aboutPage .finance-service-section .finance-carousel-search .finance-wrapper:hover .hover .hover-four {
+  opacity: 1;
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transform: scale(1);
+}
+
+.aboutPage .finance-service-section .finance-carousel-search .finance-wrapper .icon {
+  background: transparent;
+  box-shadow: none;
+  transform: translateY(0);
+  margin: 30px auto 10px;
+}
+
+.aboutPage .finance-service-section .finance-carousel-search .finance-wrapper .wrapper-content {
+  border-bottom: 4px solid #00A3E1;
+}
+
+.aboutPage .finance-service-section .finance-carousel-search .finance-wrapper .wrapper-content h4 {
+  margin: 0 0 15px;
+}
+
+.aboutPage .finance-service-section .finance-carousel-search .finance-wrapper .wrapper-content p {
+  padding: 0 35px 38px;
+}
+
+.aboutPage .finance-service-section .finance-carousel-search .finance-wrapper .hover .hover-one,
+.aboutPage .finance-service-section .finance-carousel-search .finance-wrapper .hover .hover-two,
+.aboutPage .finance-service-section .finance-carousel-search .finance-wrapper .hover .hover-three,
+.aboutPage .finance-service-section .finance-carousel-search .finance-wrapper .hover .hover-four {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 25%;
+  background: #051c2c;
+  opacity: 0;
+  z-index: 1;
+  -webkit-transition: all 0.35s ease;
+  -o-transition: all 0.35s ease;
+  -moz-transition: all 0.35s ease;
+  transition: all 0.35s ease;
+  -webkit-transform: scaleY(0);
+  -moz-transform: scaleY(0);
+  -ms-transform: scaleY(0);
+  -o-transform: scaleY(0);
+  transform: scaleY(0);
+}
+
+.aboutPage .finance-service-section .finance-carousel-search .finance-wrapper .hover .hover-one {
+  top: 0;
+  -webkit-transition-delay: 0.25s;
+  -moz-transition-delay: 0.25s;
+  -o-transition-delay: 0.25s;
+  transition-delay: 0.25s;
+}
+
+.aboutPage .finance-service-section .finance-carousel-search .finance-wrapper .hover .hover-two {
+  top: 25%;
+  -webkit-transition-delay: 0.105s;
+  -moz-transition-delay: 0.105s;
+  -o-transition-delay: 0.105s;
+  transition-delay: 0.105s;
+}
+
+.aboutPage .finance-service-section .finance-carousel-search .finance-wrapper .hover .hover-three {
+  top: 49%;
+  -webkit-transition-delay: 0.105s;
+  -moz-transition-delay: 0.105s;
+  -o-transition-delay: 0.105s;
+  transition-delay: 0.105s;
+}
+
+.aboutPage .finance-service-section .finance-carousel-search .finance-wrapper .hover .hover-four {
   top: 74%;
   -webkit-transition-delay: 0s;
   -moz-transition-delay: 0s;
