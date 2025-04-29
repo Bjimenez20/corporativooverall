@@ -1,38 +1,32 @@
-var $container = $('.dropbar-menu'),
-    $list = $('.dropbar-menu ul'),
-    listItem = $list.find('li');
+document.addEventListener('DOMContentLoaded', function () {
+  $(".dropbar .title").click(function () {
+    const $dropbar = $(this).closest('.dropbar');
+    const $container = $dropbar.find('.dropbar-menu');
+    const $list = $container.find('ul');
 
-$(".dropbar .title").click(function () {
-  if( $container.height() > 0) {
-    closeMenu(this);
-  } else {
-    openMenu(this);
+    if ($container.height() > 0) {
+      closeMenu($dropbar, $container, $list, this);
+    } else {
+      openMenu($dropbar, $container, $list);
+    }
+  });
+
+  $(".dropbar-menu li").click(function () {
+    const $dropbar = $(this).closest('.dropbar');
+    const $container = $dropbar.find('.dropbar-menu');
+    const $list = $container.find('ul');
+    closeMenu($dropbar, $container, $list, this);
+  });
+
+  function openMenu($dropbar, $container, $list) {
+    $dropbar.removeClass("closed");
+    const items = $list.find('li').length;
+    $container.css("height", items * 40 + "px"); // 40px por item
+  }
+
+  function closeMenu($dropbar, $container, $list, el) {
+    $dropbar.addClass("closed").find(".title").text($(el).text());
+    $container.css("height", 0);
+    $list.css("top", 0);
   }
 });
-
-$(".dropbar-menu li").click(function () {
-  closeMenu(this);
-});
-
-function closeMenu(el) {
-  $(el).closest('.dropbar').toggleClass("closed").find(".title").text($(el).text());
-  $container.css("height", 0);
-  $list.css( "top", 0 );
-}
-
-function openMenu(el) {
-  $(el).parent().toggleClass("closed");
-  
-  $container.css({
-    height: 200
-  })
-  .mousemove(function(e) {
-    var heightDiff = $list.height() / $container.height(),
-        offset = $container.offset(),
-        relativeY = (e.pageY - offset.top),
-        top = relativeY*heightDiff > $list.height()-$container.height() ?
-              $list.height()-$container.height() : relativeY*heightDiff;
-
-    $list.css("top", -top);
-  });
-}

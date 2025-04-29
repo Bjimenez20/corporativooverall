@@ -66,8 +66,9 @@
                                     <div class="dropbar closed">
                                         <i class="" aria-hidden="true"></i>
                                         <div class="title">Idioma</div>
+
                                         <div class="dropbar-menu">
-                                            <ul class="nav navbar-nav">
+                                            <ul>
                                                 <li><img src="assets/images/map/usa.png" alt="">Ingles</li>
                                                 <li><img src="assets/images/map/Esp.png" alt="">Español</li>
                                             </ul>
@@ -83,11 +84,9 @@
                                         <li><a class="linkedin"
                                                 href="https://www.linkedin.com/company/corporativo-overall/posts/?feedView=all"><i
                                                     class="fab fa-linkedin"></i> </a> </li>
-
                                         <li><a class="instagram"
                                                 href="https://www.instagram.com/corporativooverall/?hl=es"><i
                                                     class="fab fa-instagram"></i> </a> </li>
-
                                         <li><a class="tiktok" href="https://www.tiktok.com/@corporativooverall"><i
                                                     class="fab fa-tiktok"></i></i>
                                             </a> </li>
@@ -110,7 +109,7 @@
                     </div>
                     <div class="collapse navbar-collapse navbar-right">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="index.html">Inicio</a></li>
+                            <li><a href="index.html">Inicio</a></li>
                             <li><a href="Conocenos.html">Conócenos</a></li>
 
                             <li class="nav-item dropdown static">
@@ -129,8 +128,7 @@
                                                         <li><a href="Marketing_Digital.html">Marketing Digital</a></li>
                                                         <li><a href="Outsourcing_Staffing.html">Outsourcing &
                                                                 Staffing</a></li>
-                                                        <li><a href="Talent_Solutions.html">Talent Solutions</a>
-                                                        </li>
+                                                        <li><a href="Talent_Solutions.html">Talent Solutions</a></li>
                                                         <li><a href="Payroll.html">Payroll</a></li>
                                                     </ul>
                                                 </div>
@@ -170,21 +168,19 @@
                                     <li><a href="cart.html">Cart</a></li>
                                 </ul>
                             </li>
-
-                            <li><a href="contacto.html">Contacto</a></li>
+                            <li class="active"><a href="contacto.html">Contacto</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </nav>
-
     </header> <!-- header-section -->
 
 
 
     <section class="slider-section">
         <div class="rev_slider_wrapper">
-            <div id="rev_slider_1" class="rev_slider" style="display:none">
+            <div id="rev_slider_1" class="rev_slider">
                 <ul>
                     <li data-transition="random" data-masterspeed="300" data-title="Slide Title"
                         data-param1="Additional Text">
@@ -192,7 +188,8 @@
                         <img src="assets/images/slider/slider-1.jpg" alt="Sky" class="rev-slidebg">
                         <!-- LAYER NR. 2 -->
                         <div class="tp-caption sfr font-extra-bold tp-resizeme letter-space-4" data-x="left"
-                            data-hoffset="-60" data-y="top" data-voffset="300"
+                            data-hoffset="60" data-y="top" data-voffset="['300','200','150','80']"
+                            data-fontsize="['40','30','24','18']"
                             data-frames='[{"delay":0,"speed":3000,"frame":"0","from":"x:[175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:1;","mask":"x:[-100%];y:0;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'>
                             37 años en gestión de talento
                         </div>
@@ -200,13 +197,15 @@
 
                         <!-- LAYER NR. 3 -->
                         <div class="tp-caption font-medium sfb tp-resizeme letter-space-5" data-x="left"
-                            data-hoffset="-60" data-y="center" data-voffset="10"
+                            data-hoffset="['60','40','30','20']" data-y="center" data-voffset="['10','40','30','40']"
+                            data-fontsize="['36','30','24','18']" data-lineheight="['44','38','32','26']"
                             data-frames='[{"delay":1000,"speed":2000,"frame":"0","from":"y:top;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'>
                             Operación continua con más de 15,000 colaboradores en Latam.
                         </div>
 
+
                         <!-- LAYER NR. 4 -->
-                        <div class="tp-caption sfr tp-resizeme letter-space-4" data-x="left" data-hoffset="-60"
+                        <div class="tp-caption sfr tp-resizeme letter-space-4" data-x="left" data-hoffset="60"
                             data-y="center" data-voffset="70"
                             data-frames='[{"delay":2200,"speed":2000,"frame":"0","from":"x:[175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:1;","mask":"x:[-100%];y:0;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'>
                             <a href="./Conocenos.html"
@@ -1110,9 +1109,8 @@
                 </div>
             </div>
         </div>
-    </section> <!-- multi-section -->
-
-
+    </section>
+    <!-- multi-section -->
 
     <footer class="footer-section">
         <div class="footer-container">
