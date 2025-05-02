@@ -7202,7 +7202,7 @@ select {
         About-Company-Section STYLE 
 ============================================================ */
 .about-Company-Section {
-  background: url(../images/about-company-bg.jpg) no-repeat center top;
+  /* background: url(../images/about-company-bg.jpg) no-repeat center top; */
   background-size: cover;
 }
 
