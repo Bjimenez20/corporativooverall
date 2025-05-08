@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Corporativo Overall</title>
+    <title data-i18n="head.title">Corporativo Overall</title>
     <!-- fav icon -->
     <link href="assets/images/favicon.png" rel="shortcut icon" type="image/png">
 
@@ -31,7 +31,7 @@
 
 </head>
 
-<body class="homePageOne">
+<body class="subPages aboutPage">
     <!-- start preloader -->
     <div id="preloader">
         <div class="preloader">
@@ -65,16 +65,48 @@
                                 <div class="language">
                                     <div class="dropbar closed">
                                         <i class="" aria-hidden="true"></i>
-                                        <div class="title">Idioma</div>
-
+                                        <div class="title" data-i18n="language.title">Idioma</div>
                                         <div class="dropbar-menu">
                                             <ul>
-                                                <li><img src="assets/images/map/usa.png" alt="">Ingles</li>
-                                                <li><img src="assets/images/map/Esp.png" alt="">Español</li>
+                                                <li onclick="setLanguage('en')"><img src="assets/images/map/usa.png"
+                                                        alt=""><span data-i18n="language.english">Inglés</span></li>
+                                                <li onclick="setLanguage('es')"><img src="assets/images/map/Esp.png"
+                                                        alt=""><span data-i18n="language.spanish">Español</span></li>
+                                                <li onclick="setLanguage('ca')"><img src="assets/images/map/Esp.png"
+                                                        alt=""><span data-i18n="language.catalan">Catalán</span></li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
+
+                                <!-- <script>
+                                    function setLanguage(lang) {
+                                        fetch(`lang/${lang}.json`)
+                                            .then(response => response.json())
+                                            .then(translations => {
+                                                document.querySelectorAll('[data-i18n]').forEach(element => {
+                                                    const key = element.getAttribute('data-i18n');
+                                                    const translatedText = getNestedValue(translations, key);
+                                                    if (translatedText) {
+                                                        element.textContent = translatedText;
+                                                    }
+                                                });
+
+                                                // Guardar selección en localStorage
+                                                localStorage.setItem('language', lang);
+                                            });
+                                    }
+
+                                    function getNestedValue(obj, path) {
+                                        return path.split('.').reduce((acc, part) => acc && acc[part], obj);
+                                    }
+
+                                    document.addEventListener('DOMContentLoaded', () => {
+                                        const lang = localStorage.getItem('language') || 'es';
+                                        setLanguage(lang);
+                                    });
+
+                                </script> -->
 
                                 <div class="social-icon pull-right">
                                     <ul>
@@ -107,52 +139,70 @@
             <div class="navbar-inner">
                 <div class="container">
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="index.html"><img src="assets/images/logo-expat-talent.png"
+                        <a class="navbar-brand" href="index.html"><img src="assets/images/logo-talent-expat.png"
                                 alt="image"></a>
                     </div>
                     <div class="collapse navbar-collapse navbar-right">
                         <ul class="nav navbar-nav">
-                            <li><a href="index.html">Inicio</a></li>
-                            <li><a href="Conocenos.html">Conócenos</a></li>
+                            <li><a href="index.html" data-i18n="nav.home">Inicio</a></li>
+                            <li><a href="Conocenos.html" data-i18n="nav.about">Conócenos</a></li>
 
                             <li class="nav-item dropdown static active">
                                 <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">Servicios <i class="fa fa-angle-down"
-                                        aria-hidden="true"></i></a>
+                                    aria-haspopup="true" aria-expanded="false" data-i18n="nav.services">Servicios <i
+                                        class="fa fa-angle-down" aria-hidden="true"></i></a>
+
                                 <ul class="dropdown-menu megamenu">
                                     <li>
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-3">
                                                     <ul class="list-unstyled">
-                                                        <li><a href="Executive_Search.html">Executive
-                                                                Search</a></li>
-                                                        <li><a href="Marketing.html">Marketing</a></li>
-                                                        <li><a href="Trade_Marketing.html">Trade Marketing</a></li>
-                                                        <li><a href="Marketing_Digital.html">Marketing Digital</a></li>
-                                                        <li><a href="Outsourcing_Staffing.html">Outsourcing &
+                                                        <li><a href="Executive_Search.html"
+                                                                data-i18n="services.exec_search">Executive Search</a>
+                                                        </li>
+                                                        <li><a href="Marketing.html"
+                                                                data-i18n="services.marketing">Marketing</a></li>
+                                                        <li><a href="Trade_Marketing.html"
+                                                                data-i18n="services.trade_marketing">Trade Marketing</a>
+                                                        </li>
+                                                        <li><a href="Marketing_Digital.html"
+                                                                data-i18n="services.digital_marketing">Marketing
+                                                                Digital</a></li>
+                                                        <li><a href="Outsourcing_Staffing.html"
+                                                                data-i18n="services.outsourcing">Outsourcing &
                                                                 Staffing</a></li>
-                                                        <li><a href="Talent_Solutions.html">Talent Solutions</a>
-                                                        </li>
-                                                        <li><a href="Payroll.html">Payroll</a></li>
-                                                        <li class="active"><a href="Expat_Talent.html">Expat Talent</a>
-                                                        </li>
+                                                        <li><a href="Talent_Solutions.html"
+                                                                data-i18n="services.talent_solutions">Talent
+                                                                Solutions</a></li>
+                                                        <li><a href="Payroll.html"
+                                                                data-i18n="services.payroll">Payroll</a></li>
+                                                        <li><a href="Talent_Expat.html"
+                                                                data-i18n="services.talent_expat">Talent Expat</a></li>
                                                     </ul>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <ul class="list-unstyled">
-                                                        <li><a href="Call_Center.html">Call Center</a></li>
-                                                        <li><a href="Facility_Managment.html">Facility Management</a>
+                                                        <li><a href="Contac_Center.html"
+                                                                data-i18n="services.call_center">Call Center</a></li>
+                                                        <li><a href="Facility_Managment.html"
+                                                                data-i18n="services.facility">Facility Management</a>
                                                         </li>
-                                                        <li><a href="Permanent_Placement.html">Permanent Placement</a>
+                                                        <li><a href="Permanent_Placement.html"
+                                                                data-i18n="services.permanent">Permanent Placement</a>
                                                         </li>
-                                                        <li><a href="Gestion_Logistica.html">Gestión Logística</a></li>
-                                                        <li><a href="Servicios_Temporales.html">Servicios Temporales</a>
+                                                        <li><a href="Gestion_Logistica.html"
+                                                                data-i18n="services.logistics">Gestión Logística</a>
                                                         </li>
-                                                        <li><a href="Servicios_Industriales.html">Servicios
+                                                        <li><a href="Servicios_Temporales.html"
+                                                                data-i18n="services.temp_services">Servicios
+                                                                Temporales</a></li>
+                                                        <li><a href="Servicios_Industriales.html"
+                                                                data-i18n="services.industrial_services">Servicios
                                                                 Industriales</a></li>
-                                                        <li><a href="Servicios_Estrategicos_Salud.html">Servicios Estr.
-                                                                de Salud</a></li>
+                                                        <li><a href="Servicios_Estrategicos_Salud.html"
+                                                                data-i18n="services.health_services">Servicios Estr. de
+                                                                Salud</a></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -161,22 +211,23 @@
                                 </ul>
                             </li>
 
-                            <li class="dropdown"><a href="#">Noticias <i class="fa fa-angle-down"
+                            <li class="dropdown">
+                                <a href="#" data-i18n="nav.news">Noticias <i class="fa fa-angle-down"
                                         aria-hidden="true"></i></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="career.html">Career</a></li>
-                                    <li><a href="faq.html">Faq</a></li>
-                                    <li><a href="partner.html">Partner</a></li>
-                                    <li><a href="team.html">Team</a></li>
-                                    <li><a href="testimonial.html">Testimonial</a></li>
-                                    <li><a href="blog.html">Blog</a></li>
-                                    <li><a href="single-blog.html">Single Blog</a></li>
-                                    <li><a href="shop.html">Shop</a></li>
-                                    <li><a href="cart.html">Cart</a></li>
+                                    <li><a href="career.html" data-i18n="news.career">Career</a></li>
+                                    <li><a href="faq.html" data-i18n="news.faq">Faq</a></li>
+                                    <li><a href="partner.html" data-i18n="news.partner">Partner</a></li>
+                                    <li><a href="team.html" data-i18n="news.team">Team</a></li>
+                                    <li><a href="testimonial.html" data-i18n="news.testimonial">Testimonial</a></li>
+                                    <li><a href="blog.html" data-i18n="news.blog">Blog</a></li>
+                                    <li><a href="single-blog.html" data-i18n="news.single_blog">Single Blog</a></li>
+                                    <li><a href="shop.html" data-i18n="news.shop">Shop</a></li>
+                                    <li><a href="cart.html" data-i18n="news.cart">Cart</a></li>
                                 </ul>
                             </li>
 
-                            <li><a href="contacto.html">Contacto</a></li>
+                            <li><a href="contacto.html" data-i18n="nav.contact">Contacto</a></li>
                         </ul>
                     </div>
                 </div>
@@ -188,8 +239,6 @@
 
 
     <section class="slider-section">
-        <h2 class="hidden">title</h2>
-
         <div class="rev_slider_wrapper">
             <div id="rev_slider_1" class="rev_slider" style="display:none">
                 <ul>
@@ -198,22 +247,25 @@
                         <!-- SLIDE'S MAIN BACKGROUND IMAGE -->
                         <img src="assets/images/slider/expat-talent-1.jpg" alt="Sky" class="rev-slidebg">
                         <!-- LAYER NR. 2 -->
-                        <div class="tp-caption sfr font-extra-bold tp-resizeme letter-space-4" data-x="left"
+                        <div data-i18n="slider.headline_1"
+                            class="tp-caption sfr font-extra-bold tp-resizeme letter-space-4" data-x="left"
                             data-hoffset="0" data-y="top" data-voffset="260"
                             data-frames='[{"delay":0,"speed":3000,"frame":"0","from":"x:[175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:1;","mask":"x:[-100%];y:0;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'>
                             Técnica de Alto Nivel con
                         </div>
 
                         <!-- LAYER NR. 2 -->
-                        <div class="tp-caption sfr font-extra-bold tp-resizeme letter-space-4" data-x="left"
+                        <div data-i18n="slider.headline_2"
+                            class="tp-caption sfr font-extra-bold tp-resizeme letter-space-4" data-x="left"
                             data-hoffset="0" data-y="top" data-voffset="320"
                             data-frames='[{"delay":1000,"speed":3000,"frame":"0","from":"x:[175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:1;","mask":"x:[-100%];y:0;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'>
                             Garantía de Resultados
                         </div>
 
                         <!-- LAYER NR. 3 -->
-                        <div class="tp-caption font-medium sfb tp-resizeme letter-space-5" data-x="left"
-                            data-hoffset="0" data-y="center" data-voffset="30"
+                        <div data-i18n="slider.paragraph_1"
+                            class="tp-caption font-medium sfb tp-resizeme letter-space-5" data-x="left" data-hoffset="0"
+                            data-y="center" data-voffset="30"
                             data-frames='[{"delay":1000,"speed":2000,"frame":"0","from":"y:top;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'>
                             Reclutamos perfiles industriales con precisión para una <br> incorporación efectiva y
                             sostenible.
@@ -223,7 +275,8 @@
                         <div class="tp-caption sfr tp-resizeme letter-space-4" data-x="left" data-hoffset="0"
                             data-y="center" data-voffset="100"
                             data-frames='[{"delay":2200,"speed":2000,"frame":"0","from":"x:[175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:1;","mask":"x:[-100%];y:0;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'>
-                            <a href="#servicios_search" class="el-btn-regular slider-btn-left btn btn-primary">Solicita
+                            <a href="#servicios_search" class="el-btn-regular slider-btn-left btn btn-primary"
+                                data-i18n="slider.button_1">Solicita
                                 una evaluación sin compromiso</a>
                         </div>
                     </li>
@@ -233,21 +286,24 @@
                         <!-- SLIDE'S MAIN BACKGROUND IMAGE -->
                         <img src="assets/images/slider/expat-talent-2.jpg" alt="Sky" class="rev-slidebg">
                         <!-- LAYER NR. 2 -->
-                        <div class="tp-caption sfr font-extra-bold tp-resizeme letter-space-4" data-x="center"
+                        <div data-i18n="slider.headline_3"
+                            class="tp-caption sfr font-extra-bold tp-resizeme letter-space-4" data-x="center"
                             data-hoffset="0" data-y="top" data-voffset="300"
                             data-frames='[{"delay":0,"speed":3000,"frame":"0","from":"x:[175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:1;","mask":"x:[-100%];y:0;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'>
                             Atracción Internacional de
                         </div>
 
                         <!-- LAYER NR. 2 -->
-                        <div class="tp-caption sfr font-extra-bold tp-resizeme letter-space-4" data-x="center"
+                        <div data-i18n="slider.headline_4"
+                            class="tp-caption sfr font-extra-bold tp-resizeme letter-space-4" data-x="center"
                             data-hoffset="0" data-y="top" data-voffset="360"
                             data-frames='[{"delay":1000,"speed":3000,"frame":"0","from":"x:[175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:1;","mask":"x:[-100%];y:0;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'>
                             Talento Calificado
                         </div>
 
                         <!-- LAYER NR. 3 -->
-                        <div class="tp-caption font-medium text-center sfb tp-resizeme letter-space-5" data-x="center"
+                        <div data-i18n="slider.paragraph_2"
+                            class="tp-caption font-medium text-center sfb tp-resizeme letter-space-5" data-x="center"
                             data-hoffset="0" data-y="center" data-voffset="70"
                             data-frames='[{"delay":1000,"speed":2000,"frame":"0","from":"y:top;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'>
                             Vinculamos empresas europeas con talento latinoamericano, <br> gestionando migración e
@@ -258,7 +314,8 @@
                         <div class="tp-caption lfb tp-resizeme" data-x="center" data-hoffset="0" data-y="center"
                             data-voffset="140"
                             data-frames='[{"delay":1500,"speed":2000,"frame":"0","from":"y:bottom;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'>
-                            <a href="#sectores_search" class="el-btn-regular slider-btn-left btn btn-primary">Conoce
+                            <a href="#sectores_search" class="el-btn-regular slider-btn-left btn btn-primary"
+                                data-i18n="slider.button_2">Conoce
                                 nuestras soluciones globales</a>
                         </div>
                     </li>
@@ -267,21 +324,24 @@
                         <!-- SLIDE'S MAIN BACKGROUND IMAGE -->
                         <img src="assets/images/slider/expat-talent-3.jpg" alt="Sky" class="rev-slidebg">
                         <!-- LAYER NR. 2 -->
-                        <div class="tp-caption sfr font-extra-bold tp-resizeme letter-space-4" data-x="center"
+                        <div data-i18n="slider.headline_5"
+                            class="tp-caption sfr font-extra-bold tp-resizeme letter-space-4" data-x="center"
                             data-hoffset="0" data-y="top" data-voffset="300"
                             data-frames='[{"delay":0,"speed":3000,"frame":"0","from":"x:[175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:1;","mask":"x:[-100%];y:0;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'>
                             Reclutamiento Integral para
                         </div>
 
                         <!-- LAYER NR. 2 -->
-                        <div class="tp-caption sfr font-extra-bold tp-resizeme letter-space-4" data-x="center"
+                        <div data-i18n="slider.headline_6"
+                            class="tp-caption sfr font-extra-bold tp-resizeme letter-space-4" data-x="center"
                             data-hoffset="0" data-y="top" data-voffset="360"
                             data-frames='[{"delay":1000,"speed":3000,"frame":"0","from":"x:[175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:1;","mask":"x:[-100%];y:0;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'>
                             Sectores Estratégicos
                         </div>
 
                         <!-- LAYER NR. 3 -->
-                        <div class="tp-caption font-medium text-center sfb tp-resizeme letter-space-5" data-x="center"
+                        <div data-i18n="slider.paragraph_3"
+                            class="tp-caption font-medium text-center sfb tp-resizeme letter-space-5" data-x="center"
                             data-hoffset="0" data-y="center" data-voffset="70"
                             data-frames='[{"delay":1000,"speed":2000,"frame":"0","from":"y:top;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'>
                             Ofrecemos soluciones integrales para contratar talento latinoamericano <br> en construcción,
@@ -292,7 +352,8 @@
                         <div class="tp-caption lfb tp-resizeme" data-x="center" data-hoffset="0" data-y="center"
                             data-voffset="140"
                             data-frames='[{"delay":1500,"speed":2000,"frame":"0","from":"y:bottom;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'>
-                            <a href="#contacto_search" class="el-btn-regular slider-btn-left btn btn-primary">Solicita
+                            <a href="#contacto_search" class="el-btn-regular slider-btn-left btn btn-primary"
+                                data-i18n="slider.button_3">Solicita
                                 perfiles alineados a tus requerimientos</a>
                         </div>
                     </li>
@@ -305,10 +366,12 @@
     <section class="right-choice-section section-padding">
         <div class="container text-center">
             <div class="section-title">
-                <h2>Expertos en Expat Talent</h2>
+                <h2 data-i18n="right_choice.title">Expertos en Talent Expat</h2>
                 <div class="border-3"></div>
-                <p>Conectamos talento latinoamericano con oportunidades en Europa, gestionando procesos de selección,
+                <p data-i18n="right_choice.description">Conectamos talento latinoamericano con oportunidades en Europa,
+                    gestionando procesos de selección,
                     migración y <br> adaptación laboral para una transición exitosa y sostenible.</p>
+                <br><br>
             </div>
         </div>
     </section>
@@ -386,9 +449,9 @@
     <section class="finance-service-section section-padding">
         <div class="container text-center">
             <div class="section-title">
-                <h2>Nuestros Servicios Expat Talent</h2>
+                <h2>Nuestros Servicios Talent Expat</h2>
                 <div class="border-3"></div>
-                <p>Expat Talent conecta talento latinoamericano con oportunidades en Europa, ofreciendo servicios de
+                <p>Talent Expat conecta talento latinoamericano con oportunidades en Europa, ofreciendo servicios de
                     reclutamiento, alineación cultural y movilidad internacional. Desde la selección de perfiles
                     técnicos hasta la gestión de trámites legales y logísticos, brindamos un acompañamiento integral
                     para garantizar una transición exitosa y adaptada a los estándares europeos.</p>
@@ -465,7 +528,7 @@
             <div class="section-title text-left">
                 <h2>Perfiles</h2>
                 <div class="border"></div>
-                <p>Expat Talent facilita la integración de profesionales latinoamericanos en el mercado laboral europeo,
+                <p>Talent Expat facilita la integración de profesionales latinoamericanos en el mercado laboral europeo,
                     gestionando procesos de selección, migración y adaptación laboral para perfiles clave como chefs y
                     camareros; en construcción, operarios y supervisores de obra; en salud, médicos y enfermeros etc...
                     <br><br>
@@ -613,7 +676,7 @@
             <div class="section-title text-center">
                 <h2>Sectores</h2>
                 <div class="border-3"></div>
-                <p>Expat Talent facilita la integración de profesionales latinoamericanos en el mercado laboral europeo,
+                <p>Talent Expat facilita la integración de profesionales latinoamericanos en el mercado laboral europeo,
                     gestionando procesos de selección, migración y adaptación laboral. Ofrece perfiles especializados en
                     sectores clave como:</p>
             </div>
@@ -783,7 +846,7 @@
             <div class="section-title text-start">
                 <h2>Experiencia</h2>
                 <div class="border"></div>
-                <p>En Expat Talent, tenemos experiencia en sectores clave como manufactura, minería, construcción,
+                <p>En Talent Expat, tenemos experiencia en sectores clave como manufactura, minería, construcción,
                     transporte, salud, agroindustria, retail, logística y tecnología, conectando a empresas europeas con
                     talento especializado para cada área.</p>
             </div>
@@ -807,35 +870,23 @@
                 <div class="col-md-12 col-sm-12">
                     <div id="partners-slider" class="owl-carousel">
                         <div class="item">
-                            <div class="logo-item"> <img alt="" src="assets/images/client/cliente-executive-1.png">
+                            <div class="logo-item"> <img alt="" src="assets/images/client/cliente-talent-expat-1.png">
                             </div>
                         </div>
                         <div class="item">
-                            <div class="logo-item"><img alt="" src="assets/images/client/cliente-executive-2.png"></div>
+                            <div class="logo-item"><img alt="" src="assets/images/client/cliente-talent-expat-2.png">
+                            </div>
                         </div>
                         <div class="item">
-                            <div class="logo-item"><img alt="" src="assets/images/client/cliente-executive-3.png"></div>
+                            <div class="logo-item"><img alt="" src="assets/images/client/cliente-talent-expat-3.png">
+                            </div>
                         </div>
                         <div class="item">
-                            <div class="logo-item"><img alt="" src="assets/images/client/cliente-executive-4.png"></div>
+                            <div class="logo-item"><img alt="" src="assets/images/client/cliente-talent-expat-4.png">
+                            </div>
                         </div>
                         <div class="item">
-                            <div class="logo-item"><img alt="" src="assets/images/client/cliente-executive-5.png"></div>
-                        </div>
-                        <div class="item">
-                            <div class="logo-item"><img alt="" src="assets/images/client/cliente-executive-6.png"></div>
-                        </div>
-                        <div class="item">
-                            <div class="logo-item"><img alt="" src="assets/images/client/cliente-executive-7.png"></div>
-                        </div>
-                        <div class="item">
-                            <div class="logo-item"><img alt="" src="assets/images/client/cliente-executive-8.png"></div>
-                        </div>
-                        <div class="item">
-                            <div class="logo-item"><img alt="" src="assets/images/client/cliente-executive-9.png"></div>
-                        </div>
-                        <div class="item">
-                            <div class="logo-item"><img alt="" src="assets/images/client/cliente-executive-10.png">
+                            <div class="logo-item"><img alt="" src="assets/images/client/cliente-talent-expat-5.png">
                             </div>
                         </div>
                     </div>
@@ -1169,8 +1220,8 @@
                             Staffing</a></li>
                     <li><a href="Talent_Solutions.html">Talent Solutions</a></li>
                     <li><a href="Payroll.html">Payroll</a></li>
-                    <li><a class="active" href="Expat_Talent.html">Expat Talent</a></li>
-                    <li><a href="Call_Center.html">Call Center</a></li>
+                    <li><a class="active" href="Talent_Expat.html">Talent Expat</a></li>
+                    <li><a href="Contac_Center.html">Call Center</a></li>
                     <li><a href="Facility_Managment.html">Facility Management</a>
                     </li>
                     <li><a href="Permanent_Placement.html">Permanent Placement</a>
@@ -1228,6 +1279,7 @@
     <script src="assets/rs/revolution.extension.video.min.js"></script>
 
     <script src="assets/js/script.js"></script>
+    <!-- <script src="assets/js/main.js"></script> -->
 </body>
 
 </html>
