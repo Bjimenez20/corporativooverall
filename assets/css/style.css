@@ -9473,6 +9473,8 @@ select {
 
 .homePageOne .header-section .navbar {
   background-color: #FFFFFF;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+  transition: .5s;
 }
 
 .homePageOne .header-section .navbar.sticky .navbar-inner {
@@ -10870,6 +10872,13 @@ select {
   }
 }
 
+/*Video*/
+
+.video-small {
+  width: 100%;
+  height: auto; /* Mantiene la proporción del video */
+}
+
 /* =========================================================
         SubPage-STYLE 
 ============================================================ */
@@ -10887,7 +10896,7 @@ select {
 
 .subPage .header-section .top-bar {
   min-height: 50px;
-  line-height: 50px;
+  /* line-height: 50px; */
 }
 
 @media only screen and (max-width: 767px) {
