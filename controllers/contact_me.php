@@ -98,7 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <tr style="color: white; text-align: center;">
                             <td>&nbsp;</td>
                             <td style="">
-                                <div style="color: #172032; line-height: 1.5; margin: 25px 0; font-size: 14px;">&copy; 2023
+                                <div style="color: #172032; line-height: 1.5; margin: 25px 0; font-size: 14px;">&copy; 2025
                                     Corporativo Overall. All rights reserved.<br /></div>
                             </td>
                             <td>&nbsp;</td>
