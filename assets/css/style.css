@@ -979,7 +979,7 @@ select {
   height: 0;
   transition: height 0.3s ease;
   width: 130px;
-  text-align: center;
+  text-align: left;
   position: relative;
   box-sizing: border-box;
 }
