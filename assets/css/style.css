@@ -3007,7 +3007,7 @@ select {
 }
 
 .counting-section .counting-pusher .counting-wrapper .content p {
-  font-size: 18px;
+  font-size: 14px;
   line-height: 24px;
   color: #FFFFFF;
   margin-bottom: 0;
@@ -3017,6 +3017,75 @@ select {
   .counting-section .counting-pusher .counting-wrapper .content p {
     font-size: 16px;
   }
+}
+
+/*Input file*/
+
+.custom-file-upload {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #00bcd4;
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border: none;
+}
+
+.custom-file-upload:hover {
+  background-color: #0097a7;
+}
+
+.file-input-wrapper input[type="file"] {
+  display: none;
+}
+
+.file-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.file-name {
+  color: #ccc;
+  font-style: italic;
+}
+
+/*readmore*/
+
+.readmore {
+  display: inline-block;
+  font-weight: 600;
+  position: relative;
+  color: #a5a5a5;
+}
+
+.readmore::before {
+  content: "";
+  height: 5px;
+  width: 0;
+  background: #a5a5a5;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0;
+  vertical-align: middle;
+  margin-right: 3px;
+  -webkit-transition: all .5s ease-in;
+  -o-transition: all .5s ease-in;
+  transition: all .5s ease-in;
+}
+
+.readmore:hover::before,
+.readmore:focus::before {
+  opacity: 1;
+  width: 5px;
+}
+
+.readmore:hover,
+.readmore:focus {
+  color: #b2cb20;
 }
 
 /* =========================================================
@@ -5376,7 +5445,7 @@ select {
 }
 
 .contact-section .contact-wrapper .location li .text {
-  font-size: 18px;
+  font-size: 15px;
   line-height: 34px;
   color: #7c828b;
   margin-left: 45px;
@@ -6306,7 +6375,7 @@ select {
 }
 
 .signup-section .contact-wrapper h3 {
-  font-size: 30px;
+  font-size: 25px;
   font-weight: 400;
   line-height: 42px;
   color: #FFFFFF;
@@ -6450,7 +6519,7 @@ select {
 }
 
 .finance-service-section .finance-carousel .finance-wrapper .wrapper-content h4 {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 500;
   line-height: 26px;
   margin: -17px 0 7px;
@@ -7261,7 +7330,7 @@ select {
   font-size: 16px;
   font-weight: 300;
   line-height: 26px;
-  color: #FFFFFF;
+  color: #828282;
   margin-bottom: 35px;
 }
 
@@ -7293,7 +7362,7 @@ select {
   font-size: 18px;
   font-weight: 300;
   line-height: 48px;
-  color: #FFFFFF;
+  color: #828282;
   margin-left: 45px;
 }
 
@@ -10876,7 +10945,8 @@ select {
 
 .video-small {
   width: 100%;
-  height: auto; /* Mantiene la proporción del video */
+  height: auto;
+  /* Mantiene la proporción del video */
 }
 
 /* =========================================================

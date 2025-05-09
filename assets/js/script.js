@@ -440,7 +440,38 @@ jQuery(function ($) {
         });
     }
 
+    /*Input file*/
 
+    function validateFile(input) {
+        const file = input.files[0];
+        const fileNameElement = document.getElementById('file-name');
+
+        if (!file) {
+            fileNameElement.textContent = 'Sin archivos seleccionados';
+            return;
+        }
+
+        const allowedTypes = ['application/pdf',
+            'application/msword',
+            'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+        const maxSizeMB = 5;
+
+        if (!allowedTypes.includes(file.type)) {
+            alert('Solo se permiten archivos PDF o Word.');
+            input.value = ''; // Limpia el input
+            fileNameElement.textContent = 'Sin archivos seleccionados';
+            return;
+        }
+
+        if (file.size > maxSizeMB * 1024 * 1024) {
+            alert('El archivo es demasiado grande. Máximo permitido: 5 MB.');
+            input.value = '';
+            fileNameElement.textContent = 'Sin archivos seleccionados';
+            return;
+        }
+
+        fileNameElement.textContent = file.name;
+    }
 
 
     //-------------------------------------------------------
