@@ -4,24 +4,24 @@
 
 #offcanvas-menu {
 	position: fixed;
-    top: 0;
-    right: 0;
-    width: 250px;
-    height: 100%;
-    background: #313131;
-    
-    transform: translateX(280px);
-    transition: .5s;
-    z-index: 99999;
+	top: 0;
+	right: 0;
+	width: 250px;
+	height: 100%;
+	background: #313131;
+
+	transform: translateX(280px);
+	transition: .5s;
+	z-index: 99999;
 }
 
 .menu-wrapper {
 	height: 100%;
 	overflow: auto;
-    padding-top: 60px;
+	padding-top: 60px;
 }
 
-.menu-toggle i{
+.menu-toggle i {
 	width: 40px;
 	height: 40px;
 	line-height: 40px;
@@ -35,37 +35,40 @@
 .menu-toggle {
 	position: fixed;
 	top: 10px;
-    right: 10px;
-    transition: .1s;
-    z-index: 9999;
+	right: 10px;
+	transition: .1s;
+	z-index: 9999;
 }
 
 .menu-toggle.sticky {
 	position: fixed;
 	width: 100%;
-    top: 0;
-    right: 0;
-    text-align: right;
-    padding: 10px 10px 10px 0;
+	top: 0;
+	right: 0;
+	text-align: right;
+	padding: 10px 10px 10px 0;
 	background-color: #051c2c;
-    border-radius: 0;
+	border-radius: 0;
 }
 
 .menu-toggle.sticky::before {
 	content: "";
 	position: absolute;
-    width: 155px;
-    height: 30px;
-    left: 0;
-    right: 0;
-    top: 50%;
-    margin: -15px auto 0;
-	background: url(../images/logo-m.png) no-repeat;
+	width: 155px;
+	height: 30px;
+	left: 0;
+	right: 0;
+	top: 50%;
+	margin: -15px auto 0;
+	background: url(../images/logo-corporativo-overall-horizontal.png) no-repeat;
+	/* background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center; */
 }
 
 #offcanvas-menu .close-menu {
-    position: absolute;
-    top: 15px;
+	position: absolute;
+	top: 15px;
 	margin-left: -20px;
 }
 
@@ -81,14 +84,14 @@
 	background-color: #00A3E1;
 }
 
-#offcanvas-menu .menu-wrapper li a{
+#offcanvas-menu .menu-wrapper li a {
 	font-family: 'Montserrat', sans-serif;
 	font-size: 16px;
 	font-weight: 500;
 	color: #b7becd;
 	border-bottom: 1px solid #b7becd;
-    padding: 10px 40px;
-    display: block;
+	padding: 10px 40px;
+	display: block;
 }
 
 #offcanvas-menu .menu-wrapper li ul {
@@ -99,10 +102,10 @@
 	padding-left: 55px;
 }
 
-#offcanvas-menu .menu-wrapper li ul{
+#offcanvas-menu .menu-wrapper li ul {
 	display: none;
 }
 
-#offcanvas-menu .menu-wrapper li a.active{
+#offcanvas-menu .menu-wrapper li a.active {
 	color: #00A3E1;
 }
