@@ -1739,6 +1739,20 @@ select {
   overflow: hidden;
 }
 
+.slider-content {
+  /* position: absolute; */
+  /* top: 50%;
+  left: 47%; */
+  /* transform: translate(-50%, -50%); */
+  /* text-align: center;
+  color: white;
+  text-align: left; */
+  width: 50%;
+}
+
+.slider-content {
+  transition: opacity 0.5s ease-in-out;
+}
 .slider-section #rev_slider_1 .font-extra-bold {
   font-size: 55px !important;
   font-weight: 600 !important;
@@ -1763,9 +1777,11 @@ select {
 
 @media only screen and (max-width: 767px) {
   .slider-section #rev_slider_1 .font-extra-bold {
-    font-size: 25px !important;
-    line-height: 40px !important;
+    font-size: 22px !important;
+    line-height: 30px !important;
     margin: 0 0 9px !important;
+    top: -40px !important;
+    /* left: 10px !important; */
   }
 }
 
@@ -1785,24 +1801,17 @@ select {
     font-size: 16px !important;
     line-height: 25px !important;
     margin: 0 0 9px !important;
+    top: -40px;
   }
 }
 
 @media only screen and (max-width: 479px) {
   .slider-section #rev_slider_1 .font-medium {
-    font-size: 14px !important;
+    font-size: 12px !important;
     line-height: 18px !important;
     margin: 30px 0 9px !important;
   }
 }
-
-/*Ocultar textos lagor*/
-
-/* @media only screen and (max-width: 767px) {
-  .slider-section #rev_slider_1 .font-medium {
-    display: none;
-  }
-} */
 
 .slider-section #rev_slider_1 .btn {
   font-size: 18px !important;
@@ -1820,6 +1829,7 @@ select {
 @media only screen and (max-width: 767px) {
   .slider-section #rev_slider_1 .btn {
     padding: 10px 25px !important;
+    font-size: 14px !important;
   }
 }
 
@@ -1838,7 +1848,7 @@ select {
 
 @media only screen and (max-width: 479px) {
   .slider-section #rev_slider_1 .btn {
-    display: none;
+    font-size: 15;
   }
 }
 
@@ -1961,6 +1971,8 @@ select {
   right: 1% !important;
   left: auto !important;
 }
+
+/*Fin*/
 
 .slider-section #rev_slider_2 .font-extra-bold {
   font-size: 48px !important;
@@ -3002,7 +3014,7 @@ select {
 
 @media only screen and (max-width: 479px) {
   .counting-section .counting-pusher .counting-wrapper .content .count-description .timer {
-    font-size: 30px;
+    font-size: 40px;
   }
 }
 

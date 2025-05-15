@@ -175,6 +175,13 @@ jQuery(function ($) {
       transform: translateY(-5px);
     }
   }
+
+  /* Ocultar en móviles */
+  @media (max-width: 767px) {
+    .whatsapp-float {
+      display: none !important;
+    }
+  }
 `;
 
         document.head.appendChild(style);
