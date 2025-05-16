@@ -3376,7 +3376,7 @@ select {
   line-height: 36px;
   color: #FFFFFF;
   margin-bottom: 43px;
-  word-break: break-all;
+  /* word-break: break-all; */
 }
 
 @media only screen and (max-width: 991px) {
@@ -3391,6 +3391,7 @@ select {
     font-size: 20px;
     line-height: 30px;
     margin-bottom: 30px;
+    word-break: auto-phrase;
   }
 }
 
@@ -7519,7 +7520,7 @@ select {
   font-weight: 300;
   line-height: 26px;
   color: #828282;
-  word-break: break-all;
+  /* word-break: break-all; */
   margin-bottom: 0;
 }
 
