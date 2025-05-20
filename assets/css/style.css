@@ -1778,7 +1778,7 @@ select {
 
 @media only screen and (max-width: 767px) {
   .slider-section #rev_slider_1 .font-extra-bold {
-    font-size: 22px !important;
+    font-size: 20px !important;
     line-height: 60px !important;
     margin: 0 0 9px !important;
     top: -20px !important;
@@ -1800,17 +1800,18 @@ select {
 @media only screen and (max-width: 767px) {
   .slider-section #rev_slider_1 .font-medium {
     font-size: 16px !important;
-    line-height: 25px !important;
+    /* line-height: 25px !important; */
     margin: 0 0 9px !important;
-    top: -20px;
+    top: -10px;
   }
 }
 
 @media only screen and (max-width: 479px) {
   .slider-section #rev_slider_1 .font-medium {
-    font-size: 12px !important;
-    line-height: 18px !important;
+    font-size: 11px !important;
+    /* line-height: 18px !important; */
     margin: 30px 0 9px !important;
+
   }
 }
 
@@ -1824,13 +1825,15 @@ select {
 @media only screen and (max-width: 991px) {
   .slider-section #rev_slider_1 .btn {
     padding: 10px 40px !important;
+    top: 15px !important;
   }
 }
 
 @media only screen and (max-width: 767px) {
   .slider-section #rev_slider_1 .btn {
     padding: 10px 25px !important;
-    font-size: 14px !important;
+    font-size: 12px !important;
+    top: 15px !important;
   }
 }
 
@@ -1849,7 +1852,7 @@ select {
 
 @media only screen and (max-width: 479px) {
   .slider-section #rev_slider_1 .btn {
-    font-size: 15;
+    font-size: 15 !important;
   }
 }
 
