@@ -1801,6 +1801,7 @@ select {
   .slider-section #rev_slider_1 .font-medium {
     font-size: 13px !important;
     margin: 0 0 9px !important;
+    top: -10px;
   }
 }
 
