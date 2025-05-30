@@ -79,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
                                                         <div style="margin: 45px 0; text-align:left;">
                                                             <a style="display: inline-block;text-decoration: none; background-color: #004e96; border: none; border-radius: 4px; color: #ffffff; font-size: 16px; line-height: 1; outline: none; text-align: center; padding: 13px 30px; font-weight: bold;"
-                                                                href="https://overall.com.co/">Ir al portal</a>
+                                                                href="https://corporativooverall.com/">Ir al portal</a>
                                                         </div>
         
                                                         <div style="margin: 0;">
