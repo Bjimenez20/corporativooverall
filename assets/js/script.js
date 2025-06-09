@@ -138,56 +138,6 @@ jQuery(function ($) {
         });
     });
 
-    /* whatsapp */
-    window.addEventListener('DOMContentLoaded', () => {
-        const waButton = document.createElement('a');
-        waButton.href = 'https://wa.me/1234567890';
-        waButton.target = '_blank';
-        waButton.className = 'whatsapp-float';
-        waButton.title = 'Enviar mensaje por WhatsApp';
-        waButton.innerHTML = '<img src="https://cdn-icons-png.flaticon.com/512/124/124034.png" alt="WhatsApp" />';
-        document.body.appendChild(waButton);
-
-        const style = document.createElement('style');
-        style.textContent = `
-  .whatsapp-float {
-    position: fixed;
-    bottom: 35px;
-    right: 75px;
-    z-index: 100;
-    background-color: #25D366;
-    border-radius: 50%;
-    padding: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    animation: float-bounce 2s ease-in-out infinite;
-  }
-
-  .whatsapp-float img {
-    width: 40px;
-    height: 40px;
-  }
-
-  @keyframes float-bounce {
-    0%, 100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-5px);
-    }
-  }
-
-  /* Ocultar en móviles */
-  @media (max-width: 767px) {
-    .whatsapp-float {
-      display: none !important;
-    }
-  }
-`;
-
-        document.head.appendChild(style);
-    });
-
-
     // -------------------------------------------------------------
     //      Slider
     // -------------------------------------------------------------    
