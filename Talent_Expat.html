@@ -27,6 +27,8 @@
     <link href="assets/css/offcanvas-menu.css" rel="stylesheet" type="text/css">
     <!-- style-css -->
     <link href="assets/css/style.css" rel="stylesheet" type="text/css">
+    <!-- SweetAlert2 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
 
@@ -177,7 +179,7 @@
                                 </ul>
                             </li>
 
-                            <li><a href="contacto.html" data-i18n="nav.contact">Contacto</a></li>
+                            <li><a href="Contacto.html" data-i18n="nav.contact">Contacto</a></li>
                         </ul>
                     </div>
                 </div>
@@ -825,7 +827,7 @@
             </div>
             <div class="d-flex justify-content-center mb-4">
                 <video class="video-small rounded shadow" autoplay muted loop playsinline controls>
-                    <source src="assets/images/video/video-experiencia-talent-expat.mp4" type="video/mp4">
+                    <source src="https://corporativooverall.com/assets/images/video/video-experiencia-talent-expat.mp4" type="video/mp4">
                 </video>
             </div>
         </div>
@@ -952,25 +954,25 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-section">
-                            <form class="contact-form">
+                            <form class="contact-form" id="formContact">
                                 <div class="form-group">
-                                    <input id="name" name="name" type="text" class="form-control" required=""
+                                    <input id="full_name" name="full_name" type="text" class="form-control" required=""
                                         placeholder="NOMBRE Y APELLIDO">
                                 </div>
 
                                 <div class="form-group">
-                                    <input id="cargo" name="cargo" type="text" class="form-control" required=""
+                                    <input id="position" name="position" type="text" class="form-control" required=""
                                         placeholder="CARGO">
                                 </div>
 
                                 <div class="form-group">
-                                    <input id="empresa" name="empresa" type="text" class="form-control" required=""
+                                    <input id="company" name="company" type="text" class="form-control" required=""
                                         placeholder="EMPRESA">
                                 </div>
 
                                 <div class="form-group">
-                                    <input id="sector_empresarial" name="sector_empresarial" type="text"
-                                        class="form-control" required="" placeholder="SECTOR EMPRESARIAL">
+                                    <input id="business_sector" name="business_sector" type="text" class="form-control"
+                                        required="" placeholder="SECTOR EMPRESARIAL">
                                 </div>
 
                                 <div class="form-group">
@@ -979,7 +981,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <input id="pais" name="pais" type="text" class="form-control" required=""
+                                    <input id="country" name="country" type="text" class="form-control" required=""
                                         placeholder="PAIS">
                                 </div>
 
@@ -989,7 +991,12 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <button class="btn btn-primary" type="submit">Enviar</button>
+                                    <input id="unidad" name="unidad" value="Talent Expat" type="hidden"
+                                        class="form-control" readonly>
+                                </div>
+
+                                <div class="form-group">
+                                    <button class="btn btn-primary" type="submit" id="btn_submit">Enviar</button>
                                 </div>
                             </form>
                         </div>
@@ -1072,9 +1079,10 @@
 
                         <form class="signupForm">
                             <div class="form-wrapper">
-                                <!-- <button type="submit" class="subscribeBtn btn-primary">Suscribirme</button> -->
-
-                                <button type="submit" class="btn-primary">Suscribirme</button>
+                                <!-- <button type="submit" class="btn-primary">Suscribirme</button> -->
+                                <a class="btn-primary"
+                                    href="https://wa.me/51969476968?text=Hola%20Félix,%20me%20interesa%20atraer%20talento%20internacional%20para%20mi%20empresa.%20¿Podemos%20hablar?"
+                                    target="_blank">Suscribirme</a>
                             </div>
                         </form>
                     </div>
@@ -1224,7 +1232,7 @@
                     <li><a href="cart.html">Cart</a></li>
                 </ul>
             </li>
-            <li><a href="contacto.html">Contacto</a></li>
+            <li><a href="Contacto.html">Contacto</a></li>
         </ul>
     </div>
     <div id="toTop" class="hidden-xs">
@@ -1255,6 +1263,7 @@
     <script src="assets/rs/revolution.extension.video.min.js"></script>
 
     <script src="assets/js/script.js"></script>
+    <script src="assets/js/form_contact.js"></script>
 
     <script>
         /* whatsapp */

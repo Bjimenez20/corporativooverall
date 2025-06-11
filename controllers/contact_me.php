@@ -10,9 +10,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $business_sector = $_POST['business_sector'];
     $email = $_POST['email'];
     $country = $_POST['country'];
+    $unidad = $_POST['unidad'];
     $message = $_POST['message'];
 
-    $sql = "INSERT INTO `contacts` (`full_name`, `position`, `company`, `business_sector`, `email`, `country`, `message`) VALUES ('$full_name', '$position', '$company', '$business_sector', '$email', '$country', '$message')";
+    $sql = "INSERT INTO `contacts` (`full_name`, `position`, `company`, `business_sector`, `email`, `country`, `unidad`, `message`) VALUES ('$full_name', '$position', '$company', '$business_sector', '$email', '$country', '$unidad', '$message')";
 
     $query = mysqli_query($connection, $sql);
 
@@ -26,11 +27,89 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $business_sector = $date['business_sector'];
             $email = $date['email'];
             $country = $date['country'];
+            $unidad = $date['unidad'];
             $message = $date['message'];
         }
-        $subject = "NUEVA SOLICITUD DESDE CORPORATIVO OVERALL";
-        $mail->addAddress('bjimenez@overall.com.co');
-        //$mail->addAddress('cmesia@overall.com.co');
+
+        switch ($unidad) {
+            case 'Executive Search':
+                $subject = $unidad;
+                $mail->addAddress('bjimenez@overall.com.co');
+                break;
+
+            case 'Talent Expat':
+                $subject = $unidad;
+                $mail->addAddress('bjimenez@overall.com.co');
+                break;
+
+            case 'Talent Solutions':
+                $subject = $unidad;
+                $mail->addAddress('bjimenez@overall.com.co');
+                break;
+
+            case 'Permanent Placement':
+                $subject = $unidad;
+                $mail->addAddress('bjimenez@overall.com.co');
+                break;
+
+            case 'Marketing':
+                $subject = $unidad;
+                $mail->addAddress('bjimenez@overall.com.co');
+                break;
+
+            case 'Trade Marketing':
+                $subject = $unidad;
+                $mail->addAddress('bjimenez@overall.com.co');
+                break;
+
+            case 'Marketing Digital':
+                $subject = $unidad;
+                $mail->addAddress('bjimenez@overall.com.co');
+                break;
+
+            case 'Outsourcing Staffing':
+                $subject = $unidad;
+                $mail->addAddress('bjimenez@overall.com.co');
+                break;
+
+            case 'Facility Managment':
+                $subject = $unidad;
+                $mail->addAddress('bjimenez@overall.com.co');
+                break;
+
+            case 'Servicios Temporales':
+                $subject = $unidad;
+                $mail->addAddress('bjimenez@overall.com.co');
+                break;
+
+            case 'Payroll':
+                $subject = $unidad;
+                $mail->addAddress('bjimenez@overall.com.co');
+                break;
+
+            case 'Contact Center':
+                $subject = $unidad;
+                $mail->addAddress('bjimenez@overall.com.co');
+                break;
+
+            case 'Gestion Logistica':
+                $subject = $unidad;
+                $mail->addAddress('bjimenez@overall.com.co');
+                break;
+
+            case 'Servicios Industriales':
+                $subject = $unidad;
+                $mail->addAddress('bjimenez@overall.com.co');
+                break;
+
+            case 'Servicios Estrategicos Salud':
+                $subject = $unidad;
+                $mail->addAddress('bjimenez@overall.com.co');
+                break;
+        }
+
+        // $subject = "NUEVA SOLICITUD DE " . $unidad . " DESDE CORPORATIVO OVERALL";
+        // $mail->addAddress('bjimenez@overall.com.co');
 
         $mail->Subject = $subject;
         $mail->Body = '
@@ -72,6 +151,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                                         <li><b>Sector empresarial: </b>' . $business_sector . '</li>
                                                         <li><b>Correo: </b>' . $email . '</li>
                                                         <li><b>Pais: </b>' . $country . '</li>
+                                                        <li><b>Unidad: </b>' . $unidad . '</li>
                                                         <li><b>Mensaje: </b>' . $message . '</li>
                                                         </ul>
         

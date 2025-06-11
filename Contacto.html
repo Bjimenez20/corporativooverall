@@ -25,6 +25,7 @@
     <link href="assets/css/offcanvas-menu.css" rel="stylesheet" type="text/css">
     <!-- style-css -->
     <link href="assets/css/style.css" rel="stylesheet" type="text/css">
+    <!-- SweetAlert2 CDN -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
@@ -173,7 +174,7 @@
                                     <li><a href="cart.html">Cart</a></li>
                                 </ul>
                             </li>
-                            <li class="active"><a href="contacto.html">Contacto</a></li>
+                            <li class="active"><a href="Contacto.html">Contacto</a></li>
                         </ul>
                     </div>
                 </div>
@@ -235,6 +236,11 @@
                                 <div class="form-group">
                                     <textarea id="message" name="message" class="form-control form-message" rows="4"
                                         required="" placeholder="ESCRIBENOS..."></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <input id="unidad" name="unidad" value="Home" type="hidden" class="form-control"
+                                        readonly>
                                 </div>
 
                                 <div class="form-group">
@@ -309,78 +315,6 @@
         </div>
     </section>
 
-    <script>
-        document.getElementById("btn_submit").addEventListener("click", function () {
-            let validador = {
-                full_name: document.getElementById("full_name").value,
-                position: document.getElementById("position").value,
-                company: document.getElementById("company").value,
-                business_sector: document.getElementById("business_sector").value,
-                email: document.getElementById("email").value,
-                country: document.getElementById("country").value,
-                message: document.getElementById("message").value
-            };
-
-            let allFieldsFilled = true;
-            let emptyFields = [];
-
-            for (let key in validador) {
-                if (validador.hasOwnProperty(key)) {
-                    let element = document.getElementById(key);
-                    if (!validador[key]) {
-                        allFieldsFilled = false;
-                        element.classList.add("is-invalid");
-                        emptyFields.push(element.getAttribute("data-title"));
-                    } else {
-                        element.classList.remove("is-invalid");
-                        element.classList.add("is-valid");
-                    }
-                }
-            }
-
-            if (allFieldsFilled) {
-                let btn = this;
-                btn.disabled = true;
-                btn.innerHTML = 'Cargando...';
-                $.ajax({
-                    type: "POST",
-                    url: './controllers/contact_me.php',
-                    data: $('#formContact').serialize(),
-                    success: function (response) {
-                        Swal.fire({
-                            title: "Solicitud enviada",
-                            text: "Tus datos han sido enviados exitosamente",
-                            icon: "success",
-                            confirmButtonText: "Aceptar",
-                        }).then(() => {
-                            location.reload();
-                        });
-                    },
-                    complete: function () {
-                        btn.disabled = false;
-                        btn.innerHTML = 'Enviar mensaje';
-                    }
-                });
-            } else {
-                let errorMessage = "<ul style='list-style-type: none; margin: 0; padding: 0'>";
-                errorMessage += "<li>Faltan campos por completar:</li><br>";
-                emptyFields.forEach((title) => {
-                    errorMessage += `<li>${title}</li>`;
-                });
-                errorMessage += "</ul>";
-
-                Swal.fire({
-                    title: "Datos inválidos",
-                    text: "Faltan campos por completar",
-                    html: errorMessage,
-                    icon: "error",
-                    confirmButtonText: "Aceptar",
-                });
-                btn.disabled = false;
-                btn.innerHTML = 'Enviar mensaje';
-            }
-        });
-    </script>
     <!-- contact-section -->
 
     <footer class="footer-section">
@@ -514,7 +448,7 @@
                     <li><a href="cart.html">Cart</a></li>
                 </ul>
             </li>
-            <li><a class="active" href="contacto.html">Contacto</a></li>
+            <li><a class="active" href="Contacto.html">Contacto</a></li>
         </ul>
     </div>
     <div id="toTop" class="hidden-xs">
@@ -545,6 +479,7 @@
     <script src="assets/rs/revolution.extension.video.min.js"></script>
 
     <script src="assets/js/script.js"></script>
+    <script src="assets/js/form_contact.js"></script>
 </body>
 
 </html>
