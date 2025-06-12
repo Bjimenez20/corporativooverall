@@ -752,60 +752,13 @@
             <div class="row">
                 <div class="col-md-6 col-sm-7">
                     <div class="contact-wrapper">
-                        <h3>¿Listo para transformar tu vida? Trabaja en el extranjero y haz realidad tus metas.
-                            <span>¡Carga tú hoja de vida!</span>
+                        <h3>
+                            ¿Listo para transformar tu vida? Trabaja en el extranjero y haz realidad tus metas.
+                            <span>¡Postúlate y carga tu hoja de vida!</span>
                         </h3>
-
-                        <form class="signupForm">
-                            <div class="form-wrapper">
-                                <div class="file-input-wrapper">
-                                    <label for="customFile" class="form-label"
-                                        style="font-weight: bold; color: #00bcd4;">Sube tu archivo (PDF o Word)</label>
-                                    <label class="custom-file-upload">
-                                        Seleccionar archivo
-                                        <input type="file" id="customFile" accept=".pdf,.doc,.docx"
-                                            onchange="validateFile(this)">
-                                    </label>
-                                    <span class="file-name" id="file-name">Sin archivos seleccionados</span>
-                                </div>
-                            </div>
-                            <script>
-                                function validateFile(input) {
-                                    const file = input.files[0];
-                                    const fileNameElement = document.getElementById('file-name');
-
-                                    if (!file) {
-                                        fileNameElement.textContent = 'Sin archivos seleccionados';
-                                        return;
-                                    }
-
-                                    const allowedTypes = ['application/pdf',
-                                        'application/msword',
-                                        'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
-                                    const maxSizeMB = 5;
-
-                                    if (!allowedTypes.includes(file.type)) {
-                                        alert('Solo se permiten archivos PDF o Word.');
-                                        input.value = ''; // Limpia el input
-                                        fileNameElement.textContent = 'Sin archivos seleccionados';
-                                        return;
-                                    }
-
-                                    if (file.size > maxSizeMB * 1024 * 1024) {
-                                        alert('El archivo es demasiado grande. Máximo permitido: 5 MB.');
-                                        input.value = '';
-                                        fileNameElement.textContent = 'Sin archivos seleccionados';
-                                        return;
-                                    }
-
-                                    fileNameElement.textContent = file.name;
-                                }
-
-                            </script>
-                        </form>
+                        <button type="button" class="btn btn-info" onclick="openModal()">Postúlate aquí</button>
                     </div>
                 </div>
-
                 <div class="col-md-6 col-sm-5 hidden-xs">
                     <div class="caption text-right wow slideInRight">
                         <img src="assets/images/people-signup-talent-expat.png" alt="">
@@ -814,6 +767,313 @@
             </div>
         </div>
     </section>
+
+    <!-- Modal flotante mejorado -->
+    <div id="cvModal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <h4 class="modal-title">Formulario de Postulación</h4>
+
+            <form id="cvForm" enctype="multipart/form-data">
+                <!-- Información Personal -->
+                <h5>Información Personal</h5>
+                <div class="form-grid">
+                    <input type="text" id="nombre" name="nombre" placeholder="Nombre completo">
+                    <input type="text" id="direccion" name="direccion" placeholder="Dirección">
+                    <input type="tel" id="telefono" name="telefono" placeholder="Teléfono">
+                    <input type="email" id="correo" name="correo" placeholder="Correo electrónico">
+                    <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" placeholder="Fecha de nacimiento">
+                    <input type="text" id="nacionalidad" name="nacionalidad" placeholder="Nacionalidad">
+                    <input type="url" id="url_redes" name="url_redes" placeholder="Sitio web o redes sociales">
+                    <input type="text" id="estado_civil" name="estado_civil" placeholder="Estado civil">
+                </div>
+
+                <!-- Experiencia Laboral -->
+                <h5>Experiencia Laboral</h5>
+                <div id="experience" class="repeatable-group">
+                    <div class="form-grid">
+                        <input type="text" placeholder="Empresa">
+                        <input type="text" placeholder="Puesto">
+                        <input type="month" placeholder="Inicio">
+                        <input type="month" placeholder="Fin">
+                        <textarea placeholder="Descripción de responsabilidades" class="full-width"></textarea>
+                    </div>
+                </div>
+                <button type="button" class="btn-outline" onclick="addExperience()">+ Añadir experiencia</button>
+
+                <!-- Educación -->
+                <h5>Educación</h5>
+                <div id="education" class="repeatable-group">
+                    <div class="form-grid">
+                        <input type="text" placeholder="Institución">
+                        <input type="text" placeholder="Título">
+                        <input type="month" placeholder="Inicio">
+                        <input type="month" placeholder="Fin">
+                        <textarea placeholder="Notas o logros" class="full-width"></textarea>
+                    </div>
+                </div>
+                <button type="button" class="btn-outline" onclick="addEducation()">+ Añadir educación</button>
+
+                <!-- Habilidades y Otros -->
+                <h5>Habilidades</h5>
+                <textarea class="full-width" placeholder="Describe tus habilidades técnicas y blandas"></textarea>
+
+                <h5>Otros Detalles Relevantes</h5>
+                <textarea class="full-width" placeholder="Certificaciones, idiomas, voluntariados, etc."></textarea>
+
+                <!-- Archivos Adjuntos -->
+                <h5>Adjuntos</h5>
+                <div class="form-grid">
+                    <label class="file-label">CV (PDF o Word)
+                        <input type="file" accept=".pdf,.doc,.docx">
+                    </label>
+                    <label class="file-label">Carta de presentación (opcional)
+                        <input type="file" accept=".pdf,.doc,.docx">
+                    </label>
+                </div>
+
+                <button type="submit" class="btn-primary">Enviar Postulación</button>
+            </form>
+        </div>
+    </div>
+
+    <style>
+        /* Modal base */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        .modal-content {
+            background-color: #fff;
+            color: #333;
+            width: 95%;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 10px;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Botón cerrar */
+        .close-button {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 24px;
+            color: #333;
+            cursor: pointer;
+        }
+
+        /* Títulos */
+        .modal-title {
+            font-size: 24px;
+            color: #3aaed0;
+            margin-bottom: 20px;
+        }
+
+        .modal-content h5 {
+            margin-top: 25px;
+            color: #3aaed0;
+            font-weight: bold;
+        }
+
+        /* Diseño en columnas */
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+            resize: vertical;
+        }
+
+        /* Inputs y textarea */
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        textarea {
+            min-height: 80px;
+        }
+
+        /* Botones */
+        .btn-primary {
+            background-color: #3aaed0;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: #3498b5;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #3aaed0;
+            border: 2px solid #3aaed0;
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .btn-outline:hover {
+            background-color: #e8f8fc;
+        }
+
+        /* Archivos */
+        .file-label {
+            display: flex;
+            flex-direction: column;
+            font-weight: bold;
+            color: #3aaed0;
+        }
+
+        #cvModal {
+            z-index: 1000;
+            position: fixed;
+        }
+
+        .swal2-container {
+            z-index: 9999 !important;
+        }
+    </style>
+
+    <script>
+        function openModal() {
+            document.getElementById("cvModal").style.display = "block";
+        }
+
+        function closeModal() {
+            const modal = document.getElementById("cvModal");
+            modal.style.display = "none";
+
+            // Elimina backdrop si existe
+            const backdrop = document.querySelector('.modal-backdrop');
+            if (backdrop) backdrop.remove();
+
+            // Limpia clases comunes de modales (por si usas Bootstrap, Tailwind u otro)
+            modal.classList.remove('modal-open', 'show');
+            document.body.classList.remove('modal-open', 'overflow-hidden');
+            document.body.style.paddingRight = '';
+        }
+
+
+        function addExperience() {
+            const container = document.getElementById("experience");
+            const clone = container.children[0].cloneNode(true);
+            clone.querySelectorAll('input, textarea').forEach(el => el.value = '');
+            container.appendChild(clone);
+        }
+
+        function addEducation() {
+            const container = document.getElementById("education");
+            const clone = container.children[0].cloneNode(true);
+            clone.querySelectorAll('input, textarea').forEach(el => el.value = '');
+            container.appendChild(clone);
+        }
+
+        document.getElementById("cvForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const btn = this;
+
+            let validador = {
+                nombre: document.getElementById("nombre").value,
+                direccion: document.getElementById("direccion").value,
+                telefono: document.getElementById("telefono").value,
+                correo: document.getElementById("correo").value,
+                fecha_nacimiento: document.getElementById("fecha_nacimiento").value,
+                nacionalidad: document.getElementById("nacionalidad").value
+            };
+
+            let allFieldsFilled = true;
+            let emptyFields = [];
+
+            for (let key in validador) {
+                if (validador.hasOwnProperty(key)) {
+                    let element = document.getElementById(key);
+                    if (!validador[key]) {
+                        allFieldsFilled = false;
+                        element.classList.add("is-invalid");
+                        emptyFields.push(element.getAttribute("data-title") || element.placeholder || key);
+                    } else {
+                        element.classList.remove("is-invalid");
+                        element.classList.add("is-valid");
+                    }
+                }
+            }
+
+            if (allFieldsFilled) {
+                btn.disabled = true;
+                btn.innerHTML = 'Cargando...';
+                $.ajax({
+                    type: "POST",
+                    url: './controllers/guardar_postulacion.php',
+                    data: $('#formContact').serialize(),
+                    success: function (response) {
+                        Swal.fire({
+                            title: "Solicitud enviada",
+                            text: "Tus postulacion fue exitosa",
+                            icon: "success",
+                            confirmButtonText: "Aceptar",
+                        }).then(() => {
+                            location.reload();
+                        });
+                    },
+                    complete: function () {
+                        btn.disabled = false;
+                        btn.innerHTML = 'Enviar mensaje';
+                    }
+                });
+            } else {
+                closeModal();
+                let errorMessage = "<ul style='list-style-type: none; margin: 0; padding: 0'>";
+                errorMessage += "<li>Faltan campos por completar:</li><br>";
+                emptyFields.forEach((title) => {
+                    errorMessage += `<li>${title}</li>`;
+                });
+                errorMessage += "</ul>";
+
+                Swal.fire({
+                    title: "Datos inválidos",
+                    html: errorMessage,
+                    icon: "error",
+                    confirmButtonText: "Aceptar",
+                }).then(() => {
+                    openModal(); // volver a mostrar el modal si lo necesitas
+                });
+
+                btn.disabled = false;
+                btn.innerHTML = 'Enviar mensaje';
+            }
+        });
+    </script>
+
     <!-- Newsletter-Section -->
 
     <section class="team-section section-padding">
@@ -827,7 +1087,8 @@
             </div>
             <div class="d-flex justify-content-center mb-4">
                 <video class="video-small rounded shadow" autoplay muted loop playsinline controls>
-                    <source src="https://corporativooverall.com/assets/images/video/video-experiencia-talent-expat.mp4" type="video/mp4">
+                    <source src="https://corporativooverall.com/assets/images/video/video-experiencia-talent-expat.mp4"
+                        type="video/mp4">
                 </video>
             </div>
         </div>
