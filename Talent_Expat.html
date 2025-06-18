@@ -29,6 +29,7 @@
     <link href="assets/css/style.css" rel="stylesheet" type="text/css">
     <!-- SweetAlert2 CDN -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 </head>
 
@@ -789,46 +790,36 @@
                 </div>
 
                 <!-- Experiencia Laboral -->
-                <h5>Experiencia Laboral</h5>
-                <div id="experience" class="repeatable-group">
-                    <div class="form-grid">
-                        <input type="text" placeholder="Empresa">
-                        <input type="text" placeholder="Puesto">
-                        <input type="month" placeholder="Inicio">
-                        <input type="month" placeholder="Fin">
-                        <textarea placeholder="Descripción de responsabilidades" class="full-width"></textarea>
-                    </div>
+                <div class="section-block">
+                    <h5>Experiencia Laboral</h5>
+                    <button type="button" class="agregar-btn" id="agregarExperienciaBtn">+ Experiencia</button>
+                    <div id="experiencia-container"></div>
                 </div>
-                <button type="button" class="btn-outline" onclick="addExperience()">+ Añadir experiencia</button>
 
                 <!-- Educación -->
-                <h5>Educación</h5>
-                <div id="education" class="repeatable-group">
-                    <div class="form-grid">
-                        <input type="text" placeholder="Institución">
-                        <input type="text" placeholder="Título">
-                        <input type="month" placeholder="Inicio">
-                        <input type="month" placeholder="Fin">
-                        <textarea placeholder="Notas o logros" class="full-width"></textarea>
-                    </div>
+                <div class="section-block">
+                    <h5>Educación</h5>
+                    <button type="button" class="agregar-btn" id="agregarEducacionBtn">+ Educación</button>
+                    <div id="educacion-container"></div>
                 </div>
-                <button type="button" class="btn-outline" onclick="addEducation()">+ Añadir educación</button>
 
                 <!-- Habilidades y Otros -->
                 <h5>Habilidades</h5>
-                <textarea class="full-width" placeholder="Describe tus habilidades técnicas y blandas"></textarea>
+                <textarea class="full-width" id="habilidades" name="habilidades"
+                    placeholder="Describe tus habilidades técnicas y blandas"></textarea>
 
                 <h5>Otros Detalles Relevantes</h5>
-                <textarea class="full-width" placeholder="Certificaciones, idiomas, voluntariados, etc."></textarea>
+                <textarea class="full-width" id="otros" name="otros"
+                    placeholder="Certificaciones, idiomas, voluntariados, etc."></textarea>
 
                 <!-- Archivos Adjuntos -->
                 <h5>Adjuntos</h5>
                 <div class="form-grid">
                     <label class="file-label">CV (PDF o Word)
-                        <input type="file" accept=".pdf,.doc,.docx">
+                        <input type="file" id="cv" name="cv" accept=".pdf,.doc,.docx">
                     </label>
                     <label class="file-label">Carta de presentación (opcional)
-                        <input type="file" accept=".pdf,.doc,.docx">
+                        <input type="file" id="carta" name="carta" accept=".pdf,.doc,.docx">
                     </label>
                 </div>
 
@@ -838,16 +829,45 @@
     </div>
 
     <style>
+        .section-block {
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 5px;
+        }
+
+        .btn-add {
+            margin-top: 10px;
+            background: #3aaed0;
+            color: white;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
         /* Modal base */
         .modal-overlay {
             display: none;
             position: fixed;
-            z-index: 9999;
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.6);
+            z-index: 1050;
         }
 
         .modal-content {
@@ -862,6 +882,7 @@
             max-height: 90vh;
             overflow-y: auto;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 1060;
         }
 
         /* Botón cerrar */
@@ -961,6 +982,63 @@
         .swal2-container {
             z-index: 9999 !important;
         }
+
+        .entry {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            position: relative;
+        }
+
+        .entry input[type="text"] {
+            display: block;
+            width: 100%;
+            margin-bottom: 8px;
+            padding: 8px;
+            font-size: 14px;
+            border: 1px solid #bbb;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .entry button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #e74c3c;
+            color: #fff;
+            border: none;
+            padding: 6px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .entry button:hover {
+            background-color: #c0392b;
+        }
+
+        #experiencia-container,
+        #educacion-container {
+            margin-bottom: 20px;
+        }
+
+        .agregar-btn {
+            display: inline-block;
+            margin-bottom: 10px;
+            background-color: #3aaed0;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .agregar-btn:hover {
+            background-color: #3aaed0;
+        }
     </style>
 
     <script>
@@ -982,95 +1060,104 @@
             document.body.style.paddingRight = '';
         }
 
+        document.addEventListener("DOMContentLoaded", function () {
+            let expIndex = 0;
+            let eduIndex = 0;
 
-        function addExperience() {
-            const container = document.getElementById("experience");
-            const clone = container.children[0].cloneNode(true);
-            clone.querySelectorAll('input, textarea').forEach(el => el.value = '');
-            container.appendChild(clone);
-        }
-
-        function addEducation() {
-            const container = document.getElementById("education");
-            const clone = container.children[0].cloneNode(true);
-            clone.querySelectorAll('input, textarea').forEach(el => el.value = '');
-            container.appendChild(clone);
-        }
-
-        document.getElementById("cvForm").addEventListener("submit", function (e) {
-            e.preventDefault();
-
-            const btn = this;
-
-            let validador = {
-                nombre: document.getElementById("nombre").value,
-                direccion: document.getElementById("direccion").value,
-                telefono: document.getElementById("telefono").value,
-                correo: document.getElementById("correo").value,
-                fecha_nacimiento: document.getElementById("fecha_nacimiento").value,
-                nacionalidad: document.getElementById("nacionalidad").value
-            };
-
-            let allFieldsFilled = true;
-            let emptyFields = [];
-
-            for (let key in validador) {
-                if (validador.hasOwnProperty(key)) {
-                    let element = document.getElementById(key);
-                    if (!validador[key]) {
-                        allFieldsFilled = false;
-                        element.classList.add("is-invalid");
-                        emptyFields.push(element.getAttribute("data-title") || element.placeholder || key);
-                    } else {
-                        element.classList.remove("is-invalid");
-                        element.classList.add("is-valid");
-                    }
-                }
+            function crearInput(label, name, placeholder, required = true) {
+                return `<label>${label}: <input type="text" name="${name}" placeholder="${placeholder}" ${required ? 'required' : ''}></label>`;
             }
 
-            if (allFieldsFilled) {
-                btn.disabled = true;
-                btn.innerHTML = 'Cargando...';
-                $.ajax({
-                    type: "POST",
-                    url: './controllers/guardar_postulacion.php',
-                    data: $('#formContact').serialize(),
-                    success: function (response) {
+            function addExperience() {
+                const container = document.getElementById("experiencia-container");
+                const div = document.createElement("div");
+                div.className = "entry";
+                div.innerHTML = `
+            ${crearInput("Empresa", `experiencia[${expIndex}][empresa]`, "Empresa")}
+            ${crearInput("Cargo", `experiencia[${expIndex}][cargo]`, "Cargo")}
+            ${crearInput("Duración", `experiencia[${expIndex}][anioexp]`, "Duración")}
+            <button type="button" onclick="this.parentElement.remove()">Eliminar</button>
+        `;
+                container.appendChild(div);
+                expIndex++;
+            }
+
+            function addEducation() {
+                const container = document.getElementById("educacion-container");
+                const div = document.createElement("div");
+                div.className = "entry";
+                div.innerHTML = `
+            ${crearInput("Institución", `educacion[${eduIndex}][institucion]`, "Institución")}
+            ${crearInput("Título", `educacion[${eduIndex}][titulo]`, "Título")}
+            ${crearInput("Año", `educacion[${eduIndex}][anioedu]`, "Año")}
+            <button type="button" onclick="this.parentElement.remove()">Eliminar</button>
+        `;
+                container.appendChild(div);
+                eduIndex++;
+            }
+
+            document.getElementById("agregarExperienciaBtn").addEventListener("click", addExperience);
+            document.getElementById("agregarEducacionBtn").addEventListener("click", addEducation);
+
+            document.getElementById("cvForm").addEventListener("submit", function (e) {
+                e.preventDefault();
+                const form = this;
+                const formData = new FormData(form);
+
+                // Extraer experiencia
+                const experiencia = [];
+                document.querySelectorAll('#experiencia-container .entry').forEach(entry => {
+                    experiencia.push({
+                        empresa: entry.querySelector('[name*="[empresa]"]').value,
+                        cargo: entry.querySelector('[name*="[cargo]"]').value,
+                        anioexp: entry.querySelector('[name*="[anioexp]"]').value
+                    });
+                });
+
+                // Extraer educación
+                const educacion = [];
+                document.querySelectorAll('#educacion-container .entry').forEach(entry => {
+                    educacion.push({
+                        institucion: entry.querySelector('[name*="[institucion]"]').value,
+                        titulo: entry.querySelector('[name*="[titulo]"]').value,
+                        anioedu: entry.querySelector('[name*="[anioedu]"]').value
+                    });
+                });
+
+                // Adjuntar a formData como JSON
+                formData.append("experiencia_json", JSON.stringify(experiencia));
+                formData.append("educacion_json", JSON.stringify(educacion));
+
+                // Enviar por Axios
+                axios.post("./controllers/guardar_postulacion.php", formData)
+                    .then(res => {
+                        const data = res.data;
+                        console.log(res)
                         Swal.fire({
-                            title: "Solicitud enviada",
-                            text: "Tus postulacion fue exitosa",
-                            icon: "success",
-                            confirmButtonText: "Aceptar",
-                        }).then(() => {
-                            location.reload();
+                            title: data.status,
+                            text: data.message,
+                            icon: data.icon,
+                            confirmButtonText: 'Aceptar'
                         });
-                    },
-                    complete: function () {
-                        btn.disabled = false;
-                        btn.innerHTML = 'Enviar mensaje';
-                    }
-                });
-            } else {
-                closeModal();
-                let errorMessage = "<ul style='list-style-type: none; margin: 0; padding: 0'>";
-                errorMessage += "<li>Faltan campos por completar:</li><br>";
-                emptyFields.forEach((title) => {
-                    errorMessage += `<li>${title}</li>`;
-                });
-                errorMessage += "</ul>";
 
-                Swal.fire({
-                    title: "Datos inválidos",
-                    html: errorMessage,
-                    icon: "error",
-                    confirmButtonText: "Aceptar",
-                }).then(() => {
-                    openModal(); // volver a mostrar el modal si lo necesitas
-                });
-
-                btn.disabled = false;
-                btn.innerHTML = 'Enviar mensaje';
-            }
+                        if (data.status === 'success') {
+                            form.reset();
+                            document.getElementById("experiencia-container").innerHTML = "";
+                            document.getElementById("educacion-container").innerHTML = "";
+                            expIndex = 0;
+                            eduIndex = 0;
+                        }
+                    })
+                    .catch(err => {
+                        console.log(err);
+                        Swal.fire({
+                            title: 'Error',
+                            text: 'Ocurrió un error al enviar el formulario.',
+                            icon: 'error',
+                            confirmButtonText: 'Aceptar'
+                        });
+                    });
+            });
         });
     </script>
 
