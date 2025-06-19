@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         $subject = "Estrategias de Trade Marketing";
-        $mail->addAddress('bjimenez@overall.com.co');
+        $mail->addAddress('Cquiroz@overall.com.co');
 
         $mail->Subject = $subject;
         $mail->Body = '

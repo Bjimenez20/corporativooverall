@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         $subject = "Interés en tercerización de nómina";
-        $mail->addAddress('bjimenez@overall.com.co');
+        $mail->addAddress('eavila@overall.com.co');
 
         $mail->Subject = $subject;
         $mail->Body = '

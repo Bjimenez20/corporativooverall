@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         $subject = "Soluciones para el sector salud";
-        $mail->addAddress('bjimenez@overall.com.co');
+        $mail->addAddress('mramirez@overall.com.co');
 
         $mail->Subject = $subject;
         $mail->Body = '
@@ -79,9 +79,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                                     <li><b>Nombre completo: </b>' . $full_name . '</li>
                                                     <li><b>Empresa: </b>' . $company . '</li>
                                                 </ul>
-                                                <p style="margin: 20px 0;">
-                                                    ¿Quieres que los compile en un documento editable, formato Word o PDF, para usarlos fácilmente? ¿O necesitas que lo integre en tu sitio web como plantillas automáticas?
-                                                </p>
                                             </div>
                                         </div>
                                     </td>

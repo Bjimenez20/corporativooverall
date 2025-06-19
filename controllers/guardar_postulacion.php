@@ -13,7 +13,7 @@ function response($status, $message, $icon = 'info')
 }
 
 // Validar campos personales
-$campos = ['nombre', 'direccion', 'telefono', 'correo'];
+$campos = ['nombre', 'direccion', 'telefono', 'correo', 'fecha_nacimiento'];
 foreach ($campos as $campo) {
     if (empty($_POST[$campo])) {
         response('error', "El campo $campo es obligatorio.", 'error');
@@ -112,7 +112,7 @@ try {
     $cargo = $data['cargo'];
     $telefono = $data['telefono'];
 
-    $mail->addAddress('bjimenez@overall.com.co');
+    $mail->addAddress('fseminario@overall.com.pe');
     $mail->addAttachment($cvPath, 'CV.pdf');
     $mail->addAttachment($cartaPath, 'Carta.pdf');
     $mail->isHTML(true);

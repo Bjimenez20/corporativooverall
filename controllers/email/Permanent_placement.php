@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         $subject = "Requerimiento de contratación directa";
-        $mail->addAddress('bjimenez@overall.com.co');
+        $mail->addAddress('fseminario@overall.com.pe');
 
         $mail->Subject = $subject;
         $mail->Body = '

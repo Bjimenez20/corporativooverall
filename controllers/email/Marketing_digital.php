@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         $subject = "Consulta sobre campañas digitales";
-        $mail->addAddress('bjimenez@overall.com.co');
+        $mail->addAddress('srodriguez@overall.com.co');
 
         $mail->Subject = $subject;
         $mail->Body = '
