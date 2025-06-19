@@ -4251,6 +4251,7 @@ select {
 
 .team-section .team-carousel .team-wrapper .contact-wrapper h4 a {
   color: #222222;
+  font-size: 15px;
 }
 
 .team-section .team-carousel .team-wrapper .contact-wrapper h4 a:hover {
@@ -4258,7 +4259,7 @@ select {
 }
 
 .team-section .team-carousel .team-wrapper .contact-wrapper .position {
-  font-size: 14px;
+  font-size: 10px;
   font-weight: 500;
   color: #999999;
 }

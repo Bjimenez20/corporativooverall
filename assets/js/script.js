@@ -339,7 +339,7 @@ jQuery(function ($) {
                     dots: false,
                 },
                 1000: {
-                    items: 4
+                    items: 6
                 }
             }
         });

@@ -6,6 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $full_name = $_POST['full_name'];
     $position = $_POST['position'];
+    $phone = $_POST['phone'];
     $company = $_POST['company'];
     $business_sector = $_POST['business_sector'];
     $email = $_POST['email'];
@@ -13,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $unidad = $_POST['unidad'];
     $message = $_POST['message'];
 
-    $sql = "INSERT INTO `contacts` (`full_name`, `position`, `company`, `business_sector`, `email`, `country`, `unidad`, `message`) VALUES ('$full_name', '$position', '$company', '$business_sector', '$email', '$country', '$unidad', '$message')";
+    $sql = "INSERT INTO `contacts` (`full_name`, `position`, `phone`, `company`, `business_sector`, `email`, `country`, `unidad`, `message`) VALUES ('$full_name', '$position', '$phone', '$company', '$business_sector', '$email', '$country', '$unidad', '$message')";
 
     $query = mysqli_query($connection, $sql);
 
@@ -23,6 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         while ($date = mysqli_fetch_array($sqlSelect)) {
             $full_name = $date['full_name'];
             $position = $date['position'];
+            $phone = $date['phone'];
             $company = $date['company'];
             $business_sector = $date['business_sector'];
             $email = $date['email'];
@@ -31,8 +33,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $message = $date['message'];
         }
 
-        $subject = "Consulta sobre soluciones estratégicas de talento";
-        $mail->addAddress('dsilva@overall.com.pe');
+        $subject = "Búsqueda de Talento Ejecutivo";
+        // $mail->addAddress('dsilva@overall.com.pe');
+        $mail->addAddress('bjimenez@overall.com.co');
+        //$mail->addAddress('jalzate@overall.com.co');
 
         $mail->Subject = $subject;
         $mail->Body = '
@@ -68,9 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                                 <p style="margin: 20px 0;">Estimado equipo de Executive Search,
                                                 </p>
                                                 <p style="margin: 20px 0;">
-                                                    Me encuentro en la búsqueda de perfiles ejecutivos para posiciones
-                                                    clave dentro de nuestra organización y me gustaría conocer más sobre
-                                                    sus soluciones especializadas.
+                                                    Me encuentro en la búsqueda de perfiles ejecutivos para posiciones clave dentro de nuestra organización y me gustaría conocer más sobre sus soluciones especializadas.
                                                 </p>
                                                 <p style="margin: 20px 0;">
                                                     Agradezco su orientación y quedo atento(a) para agendar una reunión.

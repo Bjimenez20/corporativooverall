@@ -65,7 +65,7 @@
                             <div class="header-right-bar text-right">
                                 <div class="language">
                                     <div class="dropbar closed">
-                                        <i class="" aria-hidden="true"></i>
+                                        <i class="fa fa-language" aria-hidden="true"></i>
                                         <div class="title">Idioma</div>
 
                                         <div class="dropbar-menu">
@@ -681,6 +681,11 @@
                                     </div>
 
                                     <div class="form-group">
+                                        <input id="phone" name="phone" type="text" class="form-control" required=""
+                                            placeholder="TELÉFONO">
+                                    </div>
+
+                                    <div class="form-group">
                                         <input id="company" name="company" type="text" class="form-control" required=""
                                             placeholder="EMPRESA">
                                     </div>
@@ -1035,6 +1040,7 @@
             let validador = {
                 full_name: document.getElementById("full_name").value,
                 position: document.getElementById("position").value,
+                phone: document.getElementById("phone").value,
                 company: document.getElementById("company").value,
                 business_sector: document.getElementById("business_sector").value,
                 email: document.getElementById("email").value,

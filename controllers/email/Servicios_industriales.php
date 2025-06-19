@@ -1,4 +1,46 @@
-<!DOCTYPE html
+<?php
+include_once('../../connection/index.php');
+require_once('../mail/PHPMailer.php');
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    $full_name = $_POST['full_name'];
+    $position = $_POST['position'];
+    $phone = $_POST['phone'];
+    $company = $_POST['company'];
+    $business_sector = $_POST['business_sector'];
+    $email = $_POST['email'];
+    $country = $_POST['country'];
+    $unidad = $_POST['unidad'];
+    $message = $_POST['message'];
+
+    $sql = "INSERT INTO `contacts` (`full_name`, `position`, `phone`, `company`, `business_sector`, `email`, `country`, `unidad`, `message`) VALUES ('$full_name', '$position', '$phone', '$company', '$business_sector', '$email', '$country', '$unidad', '$message')";
+
+    $query = mysqli_query($connection, $sql);
+
+    if ($query) {
+        $sqlSelect = mysqli_query($connection, "SELECT * FROM contacts ORDER BY id DESC LIMIT 1");
+
+        while ($date = mysqli_fetch_array($sqlSelect)) {
+            $full_name = $date['full_name'];
+            $position = $date['position'];
+            $phone = $date['phone'];
+            $company = $date['company'];
+            $business_sector = $date['business_sector'];
+            $email = $date['email'];
+            $country = $date['country'];
+            $unidad = $date['unidad'];
+            $message = $date['message'];
+        }
+
+        $subject = "Consulta por servicios industriales especializados";
+        // $mail->addAddress('jbarrera@overall.com.co');
+        $mail->addAddress('bjimenez@overall.com.co');
+        $mail->addAddress('jalzate@overall.com.co');
+
+        $mail->Subject = $subject;
+        $mail->Body = '
+       <!DOCTYPE html
     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:box-shadow="http://www.w3.org/1999/xhtml">
 
@@ -27,18 +69,15 @@
                                         </div>
                                         <div style="line-height: 150%;">
                                             <div style="padding: 60px 50px;">
-                                                <p style="margin: 20px 0;">Estimado equipo de Executive Search,
+                                                <p style="margin: 20px 0;">Buen día,</p>
+                                                <p style="margin: 20px 0;">
+                                                   Estoy interesado en conocer su portafolio de servicios industriales, especialmente en lo relacionado con mantenimiento, operación técnica.. Etc
                                                 </p>
                                                 <p style="margin: 20px 0;">
-                                                    Me encuentro en la búsqueda de perfiles ejecutivos para posiciones
-                                                    clave dentro de nuestra organización y me gustaría conocer más sobre
-                                                    sus soluciones especializadas.
+                                                   Agradezco me indiquen con quién podría ampliar esta información. 
                                                 </p>
                                                 <p style="margin: 20px 0;">
-                                                    Agradezco su orientación y quedo atento(a) para agendar una reunión.
-                                                </p>
-                                                <p style="margin: 20px 0;">
-                                                    Saludos cordiales,
+                                                    Saludos,
                                                 </p>
                                                 <ul>
                                                     <li><b>Nombre completo: </b>' . $full_name . '</li>
@@ -68,4 +107,10 @@
     </div>
 </body>
 
-</html>
+</html>';
+
+        $mail->send();
+    } else {
+        echo "Error: " . mysqli_error($connection);
+    }
+}

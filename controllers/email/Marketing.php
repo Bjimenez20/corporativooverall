@@ -6,6 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $full_name = $_POST['full_name'];
     $position = $_POST['position'];
+    $phone = $_POST['phone'];
     $company = $_POST['company'];
     $business_sector = $_POST['business_sector'];
     $email = $_POST['email'];
@@ -13,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $unidad = $_POST['unidad'];
     $message = $_POST['message'];
 
-    $sql = "INSERT INTO `contacts` (`full_name`, `position`, `company`, `business_sector`, `email`, `country`, `unidad`, `message`) VALUES ('$full_name', '$position', '$company', '$business_sector', '$email', '$country', '$unidad', '$message')";
+    $sql = "INSERT INTO `contacts` (`full_name`, `position`, `phone`, `company`, `business_sector`, `email`, `country`, `unidad`, `message`) VALUES ('$full_name', '$position', '$phone', '$company', '$business_sector', '$email', '$country', '$unidad', '$message')";
 
     $query = mysqli_query($connection, $sql);
 
@@ -23,6 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         while ($date = mysqli_fetch_array($sqlSelect)) {
             $full_name = $date['full_name'];
             $position = $date['position'];
+            $phone = $date['phone'];
             $company = $date['company'];
             $business_sector = $date['business_sector'];
             $email = $date['email'];
@@ -32,7 +34,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         $subject = "Solicitud de información - Servicios de Marketing";
-        $mail->addAddress('nruiz@overall.com.co');
+        // $mail->addAddress('nruiz@overall.com.co');
+        $mail->addAddress('bjimenez@overall.com.co');
+        $mail->addAddress('jalzate@overall.com.co');
 
         $mail->Subject = $subject;
         $mail->Body = '
@@ -65,23 +69,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                         </div>
                                         <div style="line-height: 150%;">
                                             <div style="padding: 60px 50px;">
-                                                <p style="margin: 20px 0;">Estimado equipo de Marketing,</p>
+                                                <p style="margin: 20px 0;">Buen día,</p>
                                                 <p style="margin: 20px 0;">
-                                                   Me encuentro en la búsqueda de apoyo estratégico para activaciones BTL, campañas promocionales y experiencias de marca.
+                                                   Estoy buscando apoyo en activaciones BTL, campañas digitales y gestión estratégica de marca. Me gustaría saber cómo podrían apoyar a nuestra empresa desde Overall.
                                                 </p>
                                                 <p style="margin: 20px 0;">
-                                                  Me gustaría conocer cómo pueden ayudarme desde su unidad y qué casos de éxito tienen en este campo.
+                                                    Quedo atento(a) a sus comentarios.
                                                 </p>
                                                 <p style="margin: 20px 0;">
-                                                    Agradezco su tiempo y quedo atento(a) a su respuesta.
-                                                </p>
-                                                <p style="margin: 20px 0;">
-                                                    Cordialmente,
+                                                    Saludos,
                                                 </p>
                                                 <ul>
                                                     <li><b>Nombre completo: </b>' . $full_name . '</li>
                                                     <li><b>Empresa: </b>' . $company . '</li>
-                                                    <li><b>Teléfono: </b>' . $phone . '</li>
                                                 </ul>
                                             </div>
                                         </div>

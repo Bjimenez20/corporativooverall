@@ -12,7 +12,6 @@ function response($status, $message, $icon = 'info')
     exit;
 }
 
-// Validar campos personales
 $campos = ['nombre', 'direccion', 'telefono', 'correo', 'fecha_nacimiento'];
 foreach ($campos as $campo) {
     if (empty($_POST[$campo])) {
@@ -20,29 +19,28 @@ foreach ($campos as $campo) {
     }
 }
 
-// Archivos obligatorios
 if (!isset($_FILES['cv'])) {
-    response('error', 'Debes adjuntar el CV', 'error');
+    response('error', 'Debes adjuntar tu CV', 'error');
 }
 
-// Crear carpeta de subida
 $nombreCarpeta = preg_replace('/[^a-zA-Z0-9_]/', '_', $_POST['nombre']);
 $rutaCarpeta = "../uploads/$nombreCarpeta";
 if (!is_dir($rutaCarpeta)) mkdir($rutaCarpeta, 0777, true);
 
-// Mover archivos
 $cvPath = "$rutaCarpeta/CV.pdf";
-$cartaPath = "$rutaCarpeta/Carta.pdf";
 move_uploaded_file($_FILES['cv']['tmp_name'], $cvPath);
-move_uploaded_file($_FILES['carta']['tmp_name'], $cartaPath);
 
-// Insertar postulante
+$cartaPath = null;
+if (isset($_FILES['carta']) && $_FILES['carta']['error'] === UPLOAD_ERR_OK) {
+    $cartaPath = "$rutaCarpeta/Carta.pdf";
+    move_uploaded_file($_FILES['carta']['tmp_name'], $cartaPath);
+}
+
 $stmt = $connection->prepare("INSERT INTO postulantes (nombre, direccion, telefono, correo, fecha_nacimiento, nacionalidad, sitio_web, estado_civil, habilidades, otros, cv_path, carta_path) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 $stmt->bind_param("ssssssssssss", $_POST['nombre'], $_POST['direccion'], $_POST['telefono'], $_POST['correo'], $_POST['fecha_nacimiento'], $_POST['nacionalidad'], $_POST['url_redes'], $_POST['estado_civil'], $_POST['habilidades'], $_POST['otros'], $cvPath, $cartaPath);
 $stmt->execute();
 $postulanteId = $stmt->insert_id;
 
-// Convertir JSON
 $experiencia = json_decode($_POST['experiencia_json'], true);
 $educacion = json_decode($_POST['educacion_json'], true);
 
@@ -53,7 +51,6 @@ if (!is_array($educacion)) {
     response('error', 'Error al decodificar educación.', 'error');
 }
 
-// Insertar experiencia laboral
 if (!empty($experiencia)) {
     $stmtExp = $connection->prepare("INSERT INTO experiencia_laboral (postulante_id, empresa, cargo, anio) VALUES (?, ?, ?, ?)");
     foreach ($experiencia as $exp) {
@@ -64,7 +61,6 @@ if (!empty($experiencia)) {
     }
 }
 
-// Insertar educación
 if (!empty($educacion)) {
     $stmtEdu = $connection->prepare("INSERT INTO educacion (postulante_id, institucion, titulo, anio) VALUES (?, ?, ?, ?)");
     foreach ($educacion as $edu) {
@@ -78,9 +74,6 @@ if (!empty($educacion)) {
 $eduCount = count($educacion);
 $expCount = count($experiencia);
 
-// ---------------------------
-// Enviar correo
-// ---------------------------
 $mail = new PHPMailer\PHPMailer\PHPMailer(true);
 
 try {
@@ -89,7 +82,7 @@ try {
     $mail->Host = 'smtp.office365.com';
     $mail->SMTPAuth = true;
     $mail->Username = 'contactenos@overall.com.co';
-    $mail->Password = 'Overall20-25**';
+    $mail->Password = '0vera1120-25*-*';
     $mail->SMTPSecure = 'tls';
     $mail->Port = 587;
 
@@ -112,9 +105,11 @@ try {
     $cargo = $data['cargo'];
     $telefono = $data['telefono'];
 
-    $mail->addAddress('fseminario@overall.com.pe');
+    $mail->addAddress('bjimenez@overall.com.co');
     $mail->addAttachment($cvPath, 'CV.pdf');
-    $mail->addAttachment($cartaPath, 'Carta.pdf');
+    if ($cartaPath && file_exists($cartaPath)) {
+        $mail->addAttachment($cartaPath, 'Carta.pdf');
+    }
     $mail->isHTML(true);
     $mail->Subject = "Postulación - Talent Expat";
     $mail->Body = '

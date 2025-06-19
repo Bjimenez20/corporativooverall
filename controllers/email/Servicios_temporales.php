@@ -1,30 +1,45 @@
 <?php
-require_once(__DIR__ . '/../../connection/index.php');
-require_once(__DIR__ . '/../mail/PHPMailer.php');
+include_once('../../connection/index.php');
+require_once('../mail/PHPMailer.php');
 
-$sqlSelect = mysqli_query($connection, "
-    SELECT * FROM postulantes AS p 
-    INNER JOIN experiencia_laboral AS EXP ON p.id = EXP.postulante_id 
-    ORDER BY p.id DESC 
-    LIMIT 1
-");
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-while ($date = mysqli_fetch_array($sqlSelect)) {
-    $nombre = $date['nombre'];
-    $cargo = $date['cargo'];
-    $telefono = $date['telefono'];
-    $cvPath = $date['cv_path'];
-    $cartaPath = $date['carta_path'];
-}
+    $full_name = $_POST['full_name'];
+    $position = $_POST['position'];
+    $phone = $_POST['phone'];
+    $company = $_POST['company'];
+    $business_sector = $_POST['business_sector'];
+    $email = $_POST['email'];
+    $country = $_POST['country'];
+    $unidad = $_POST['unidad'];
+    $message = $_POST['message'];
 
-$subject = "Postulación - Talent Expat ";
-$mail->addAddress('bjimenez@overall.com.co');
+    $sql = "INSERT INTO `contacts` (`full_name`, `position`, `phone`, `company`, `business_sector`, `email`, `country`, `unidad`, `message`) VALUES ('$full_name', '$position', '$phone', '$company', '$business_sector', '$email', '$country', '$unidad', '$message')";
 
-$mail->addAttachment($cvPath, 'CV.pdf');
-$mail->addAttachment($cartaPath, 'Carta.pdf');
+    $query = mysqli_query($connection, $sql);
 
-$mail->Subject = $subject;
-$mail->Body = '
+    if ($query) {
+        $sqlSelect = mysqli_query($connection, "SELECT * FROM contacts ORDER BY id DESC LIMIT 1");
+
+        while ($date = mysqli_fetch_array($sqlSelect)) {
+            $full_name = $date['full_name'];
+            $position = $date['position'];
+            $phone = $date['phone'];
+            $company = $date['company'];
+            $business_sector = $date['business_sector'];
+            $email = $date['email'];
+            $country = $date['country'];
+            $unidad = $date['unidad'];
+            $message = $date['message'];
+        }
+
+        $subject = "Consulta por servicios temporales";
+        // $mail->addAddress('eavila@overall.com.co');
+        $mail->addAddress('bjimenez@overall.com.co');
+        $mail->addAddress('jalzate@overall.com.co');
+
+        $mail->Subject = $subject;
+        $mail->Body = '
        <!DOCTYPE html
     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:box-shadow="http://www.w3.org/1999/xhtml">
@@ -54,23 +69,20 @@ $mail->Body = '
                                         </div>
                                         <div style="line-height: 150%;">
                                             <div style="padding: 60px 50px;">
-                                                <p style="margin: 20px 0;">Estimado equipo de Talent Expat,</p>
+                                                <p style="margin: 20px 0;">Buen día,</p>
                                                 <p style="margin: 20px 0;">
-                                                    Mi nombre es ' . $nombre . ' y estoy interesado(a) en formar parte de las oportunidades internacionales que manejan desde Overall.
+                                                   Estoy interesado en conocer su portafolio de servicios temporales para apoyar la operación de nuestra empresa.
                                                 </p>
                                                 <p style="margin: 20px 0;">
-                                                  Adjunto mi hoja de vida para que sea tenida en cuenta en procesos que se ajusten a mi perfil. 
+                                                   Agradezco me indiquen con quién puedo hablar para ampliar la información y conocer su cobertura. 
                                                 </p>
                                                 <p style="margin: 20px 0;">
-                                                  Agradezco su atención y quedo atento(a) a cualquier novedad.
-                                                </p>
-                                                <p style="margin: 20px 0;">
-                                                    Cordialmente,
+                                                    Saludos,
                                                 </p>
                                                 <ul>
-                                                    <li><b>Nombre completo: </b>' . $nombre . '</li>
-                                                    <li><b>Profesión: </b>' . $cargo . '</li>
-                                                    <li><b>Teléfono: </b>' . $telefono . '</li>
+                                                    <li><b>Nombre completo: </b>' . $full_name . '</li>
+                                                    <li><b>Empresa: </b>' . $company . '</li>
+                                                    <li><b>Teléfono: </b>' . $phone . '</li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -97,8 +109,8 @@ $mail->Body = '
 
 </html>';
 
-if ($mail->send()) {
-    response('success', "Postulación registrada correctamente. Experiencia: $expCount, Educación: $eduCount.", 'success');
-} else {
-    response('error', 'La postulación se registró, pero no se pudo enviar el correo.', 'warning');
+        $mail->send();
+    } else {
+        echo "Error: " . mysqli_error($connection);
+    }
 }

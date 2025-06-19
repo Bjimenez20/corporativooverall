@@ -6,6 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $full_name = $_POST['full_name'];
     $position = $_POST['position'];
+    $phone = $_POST['phone'];
     $company = $_POST['company'];
     $business_sector = $_POST['business_sector'];
     $email = $_POST['email'];
@@ -13,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $unidad = $_POST['unidad'];
     $message = $_POST['message'];
 
-    $sql = "INSERT INTO `contacts` (`full_name`, `position`, `company`, `business_sector`, `email`, `country`, `unidad`, `message`) VALUES ('$full_name', '$position', '$company', '$business_sector', '$email', '$country', '$unidad', '$message')";
+    $sql = "INSERT INTO `contacts` (`full_name`, `position`, `phone`, `company`, `business_sector`, `email`, `country`, `unidad`, `message`) VALUES ('$full_name', '$position', '$phone', '$company', '$business_sector', '$email', '$country', '$unidad', '$message')";
 
     $query = mysqli_query($connection, $sql);
 
@@ -23,6 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         while ($date = mysqli_fetch_array($sqlSelect)) {
             $full_name = $date['full_name'];
             $position = $date['position'];
+            $phone = $date['phone'];
             $company = $date['company'];
             $business_sector = $date['business_sector'];
             $email = $date['email'];
@@ -31,8 +33,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $message = $date['message'];
         }
 
-        $subject = "Consulta sobre campañas digitales";
-        $mail->addAddress('srodriguez@overall.com.co');
+        $subject = "Solicitud de información - Servicios de Marketing";
+        // $mail->addAddress('srodriguez@overall.com.co');
+        $mail->addAddress('bjimenez@overall.com.co');
+        $mail->addAddress('jalzate@overall.com.co');
 
         $mail->Subject = $subject;
         $mail->Body = '
@@ -65,18 +69,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                         </div>
                                         <div style="line-height: 150%;">
                                             <div style="padding: 60px 50px;">
-                                                <p style="margin: 20px 0;">Estimado equipo de Publicidad Digital,</p>
+                                                <p style="margin: 20px 0;">Estimado equipo de Marketing,</p>
                                                 <p style="margin: 20px 0;">
-                                                   Estoy interesado(a) en conocer sus servicios para la gestión y ejecución de campañas publicitarias en medios digitales.
+                                                   Me encuentro en la búsqueda de apoyo estratégico, campañas promocionales y experiencias de marca.
                                                 </p>
                                                 <p style="margin: 20px 0;">
-                                                  Me gustaría saber cómo podrían ayudarnos a incrementar nuestra visibilidad y rendimiento online.
+                                                  Me gustaría conocer cómo pueden ayudarme desde su unidad y qué casos de éxito tienen en este campo.
                                                 </p>
                                                 <p style="margin: 20px 0;">
-                                                    Quedo atento(a) para agendar una reunión.
+                                                    Agradezco su tiempo y quedo atento(a) a su respuesta.
                                                 </p>
                                                 <p style="margin: 20px 0;">
-                                                    Saludos cordiales,
+                                                    Cordialmente,
                                                 </p>
                                                 <ul>
                                                     <li><b>Nombre completo: </b>' . $full_name . '</li>

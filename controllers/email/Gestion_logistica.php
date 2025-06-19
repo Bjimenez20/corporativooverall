@@ -33,8 +33,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $message = $date['message'];
         }
 
-        $subject = "Interés en tercerización de nómina";
-        // $mail->addAddress('eavila@overall.com.co');
+        $subject = "Solicitud de información - Servicios de Logistica";
+        // $mail->addAddress('grodriguez@overall.com.co');
         $mail->addAddress('bjimenez@overall.com.co');
         $mail->addAddress('jalzate@overall.com.co');
 
@@ -71,10 +71,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                             <div style="padding: 60px 50px;">
                                                 <p style="margin: 20px 0;">Buen día,</p>
                                                 <p style="margin: 20px 0;">
-                                                   Estoy evaluando opciones para la tercerización del servicio de nómina y quisiera saber cómo funciona su proceso y qué beneficios ofrecen.
+                                                   Estoy buscando apoyo en soluciones logísticas integrales, específicamente en almacenamiento, bodegaje y manejo de inventarios. Me gustaría conocer cómo podrían apoyarme.
                                                 </p>
                                                 <p style="margin: 20px 0;">
-                                                    Quedo atento(a).
+                                                   Quedo atento(a) a sus comentarios.
                                                 </p>
                                                 <p style="margin: 20px 0;">
                                                     Saludos,
