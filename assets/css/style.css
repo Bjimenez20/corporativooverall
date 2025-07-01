@@ -4433,7 +4433,7 @@ select {
 .team-section .team-carousel-sector .team-wrapper .contact-wrapper h4 {
   font-size: 24px;
   font-weight: 500;
-  line-height: 34px;
+  /* line-height: 34px; */
   margin-bottom: -4px;
 }
 
