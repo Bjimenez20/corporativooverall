@@ -812,14 +812,99 @@
                 <textarea class="full-width" id="otros" name="otros"
                     placeholder="Certificaciones, idiomas, voluntariados, etc."></textarea>
 
+
+                <style>
+                    .form-grid {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 10px;
+                        margin-bottom: 20px;
+                    }
+
+                    label {
+                        font-weight: 500;
+                        margin-bottom: 5px;
+                    }
+
+                    select {
+                        width: 100%;
+                        padding: 10px;
+                        border-radius: 8px;
+                        border: 1px solid #ccc;
+                        font-size: 16px;
+                        background-color: #fff;
+                        transition: border-color 0.3s ease;
+                    }
+
+                    select:focus {
+                        border-color: #1e5fa4;
+                        outline: none;
+                        box-shadow: 0 0 0 2px rgba(30, 95, 164, 0.2);
+                    }
+                </style>
+
+                <!-- <div class="form-section">
+                    <h5>¿Está aplicando a una vacante de conducción?</h5>
+
+                    <div class="radio-group">
+                        <label>Sí <input type="radio" name="aplica_conduccion" value="si"
+                                onclick="mostrarOpciones(true)"></label>
+                        <label>No <input type="radio" name="aplica_conduccion" value="no"
+                                onclick="mostrarOpciones(false)"></label>
+                    </div>
+                    <h5 id="ConduccionTitle" style="display: none;">Selecciona un área:</h5>
+                    <div id="opcionesConduccion" class="radio-group" style="display: none;">
+                        <label>Chófer <input type="radio" name="roles" value="Chófer"> </label>
+                        <label>Azafata <input type="radio" name="roles" value="Azafata"> </label>
+                        <label>Housekeeping <input type="radio" name="roles" value="Housekeeping"> </label>
+                    </div>
+                </div> -->
+                <h5>Cargo a postularse</h5>
+                <div class="form-grid">
+                    <select name="roles" id="roles">
+                        <option value="" disabled selected>Seleccione...</option>
+                        <option value="Soldador">Soldador</option>
+                        <option value="Electrisista">Electrisista</option>
+                        <option value="Chófer Camion">Chófer Camion</option>
+                        <option value="Conductor Carga Pesada">Conductor Carga Pesada</option>
+                        <option value="Tecnico de Mantenimiento">Tecnico de Mantenimiento</option>
+                        <option value="Mecanico">Mecanico</option>
+                        <option value="Operario">Operario</option>
+                        <option value="Tubero">Tubero</option>
+                        <option value="Albañil">Albañil</option>
+                        <option value="Carpintero">Carpintero</option>
+                        <option value="Encofrador">Encofrador</option>
+                        <option value="Mozo">Mozo</option>
+                        <option value="Housekeeping">Housekeeping</option>
+                        <option value="Medico">Medico</option>
+                        <option value="Caldero">Caldero</option>
+                    </select>
+                </div>
+
+                <!-- <script>
+                    function mostrarOpciones(mostrar) {
+                        const opciones = document.getElementById('opcionesConduccion');
+                        opciones.style.display = mostrar ? 'flex' : 'none';
+
+                        const title = document.getElementById('ConduccionTitle');
+                        title.style.display = mostrar ? 'flex' : 'none';
+                    }
+                </script> -->
                 <!-- Archivos Adjuntos -->
                 <h5>Adjuntos</h5>
                 <div class="form-grid">
-                    <label class="file-label">CV (PDF o Word)
-                        <input type="file" id="cv" name="cv" accept=".pdf,.doc,.docx">
+                    <label class="file-label">CV, Certiadulto y DNI
+                        <input type="file" id="cv" name="cv[]" accept=".pdf" multiple>
+                        <small style="display:block; color: #969595; font-size: 10px;">
+                            Solo se permiten archivo en formato PDF (ej: CV, Certiadulto y DNI).
+                        </small>
                     </label>
-                    <label class="file-label">Carta de presentación (opcional)
-                        <input type="file" id="carta" name="carta" accept=".pdf,.doc,.docx">
+                    <label class="file-label">Otros (opcional)
+                        <input type="file" id="otros" name="otros[]" accept=".pdf" multiple>
+                        <small style="display:block; color: #969595; font-size: 10px;">
+                            Solo se permiten archivos en formato PDF (ej: Licencia de conducción), si aplica a una
+                            vacante relacionada con conducción.
+                        </small>
                     </label>
                 </div>
 

@@ -12,45 +12,104 @@ function response($status, $message, $icon = 'info')
     exit;
 }
 
-$campos = ['nombre', 'direccion', 'telefono', 'correo', 'fecha_nacimiento'];
+$campos = ['nombre', 'direccion', 'telefono', 'correo', 'fecha_nacimiento', 'roles'];
 foreach ($campos as $campo) {
     if (empty($_POST[$campo])) {
         response('error', "El campo $campo es obligatorio.", 'error');
     }
 }
 
-if (!isset($_FILES['cv'])) {
-    response('error', 'Debes adjuntar tu CV', 'error');
-}
-
 $nombreCarpeta = preg_replace('/[^a-zA-Z0-9_]/', '_', $_POST['nombre']);
 $rutaCarpeta = "../uploads/$nombreCarpeta";
 if (!is_dir($rutaCarpeta)) mkdir($rutaCarpeta, 0777, true);
 
-$cvPath = "$rutaCarpeta/CV.pdf";
-move_uploaded_file($_FILES['cv']['tmp_name'], $cvPath);
+$maxFileSize = 5 * 1024 * 1024; // 5MB
 
-$cartaPath = null;
-if (isset($_FILES['carta']) && $_FILES['carta']['error'] === UPLOAD_ERR_OK) {
-    $cartaPath = "$rutaCarpeta/Carta.pdf";
-    move_uploaded_file($_FILES['carta']['tmp_name'], $cartaPath);
+$cvPaths = [];
+if (!isset($_FILES['cv'])) {
+    response('error', 'Debes adjuntar al menos un archivo de CV.', 'error');
+}
+foreach ($_FILES['cv']['tmp_name'] as $index => $tmpName) {
+    if ($_FILES['cv']['error'][$index] === UPLOAD_ERR_OK) {
+        if ($_FILES['cv']['size'][$index] > $maxFileSize) {
+            response('error', 'Uno de los archivos del CV supera los 5MB.', 'error');
+        }
+
+        $mime = mime_content_type($tmpName);
+        if ($mime !== 'application/pdf') {
+            response('error', 'Todos los archivos del CV deben ser PDF.', 'error');
+        }
+
+        $originalName = basename($_FILES['cv']['name'][$index]);
+        $safeName = preg_replace('/[^a-zA-Z0-9_\.-]/', '_', pathinfo($originalName, PATHINFO_FILENAME));
+        $extension = pathinfo($originalName, PATHINFO_EXTENSION);
+        $uniqueName = $safeName . '_' . time() . "_$index." . $extension;
+        $filePath = "$rutaCarpeta/$uniqueName";
+
+        if (move_uploaded_file($tmpName, $filePath)) {
+            $cvPaths[] = $filePath;
+        }
+    }
 }
 
-$stmt = $connection->prepare("INSERT INTO postulantes (nombre, direccion, telefono, correo, fecha_nacimiento, nacionalidad, sitio_web, estado_civil, habilidades, otros, cv_path, carta_path) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-$stmt->bind_param("ssssssssssss", $_POST['nombre'], $_POST['direccion'], $_POST['telefono'], $_POST['correo'], $_POST['fecha_nacimiento'], $_POST['nacionalidad'], $_POST['url_redes'], $_POST['estado_civil'], $_POST['habilidades'], $_POST['otros'], $cvPath, $cartaPath);
+$otrosPaths = [];
+if (isset($_FILES['otros'])) {
+    foreach ($_FILES['otros']['tmp_name'] as $index => $tmpName) {
+        if ($_FILES['otros']['error'][$index] === UPLOAD_ERR_OK) {
+            if ($_FILES['otros']['size'][$index] > $maxFileSize) {
+                response('error', 'Uno de los archivos en "Otros" supera los 5MB.', 'error');
+            }
+
+            $mime = mime_content_type($tmpName);
+            if ($mime !== 'application/pdf') {
+                response('error', 'Todos los archivos en "Otros" deben ser PDF.', 'error');
+            }
+
+            $originalName = basename($_FILES['otros']['name'][$index]);
+            $safeName = preg_replace('/[^a-zA-Z0-9_\.-]/', '_', pathinfo($originalName, PATHINFO_FILENAME));
+            $extension = pathinfo($originalName, PATHINFO_EXTENSION);
+            $uniqueName = $safeName . '_' . time() . "_$index." . $extension;
+            $filePath = "$rutaCarpeta/$uniqueName";
+
+            if (move_uploaded_file($tmpName, $filePath)) {
+                $otrosPaths[] = $filePath;
+            }
+        }
+    }
+}
+
+// Guardar postulante
+$stmt = $connection->prepare("
+    INSERT INTO postulantes 
+    (nombre, direccion, telefono, correo, fecha_nacimiento, nacionalidad, sitio_web, estado_civil, habilidades, otros, perfil_cargo, cv_path, otros_path) 
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+");
+$cvPathsJson = json_encode($cvPaths);
+$otrosPathsJson = json_encode($otrosPaths);
+$stmt->bind_param(
+    "sssssssssssss",
+    $_POST['nombre'],
+    $_POST['direccion'],
+    $_POST['telefono'],
+    $_POST['correo'],
+    $_POST['fecha_nacimiento'],
+    $_POST['nacionalidad'],
+    $_POST['url_redes'],
+    $_POST['estado_civil'],
+    $_POST['habilidades'],
+    $_POST['otros'],
+    $_POST['roles'],
+    $cvPathsJson,
+    $otrosPathsJson
+);
 $stmt->execute();
 $postulanteId = $stmt->insert_id;
 
+// Guardar experiencia
 $experiencia = json_decode($_POST['experiencia_json'], true);
-$educacion = json_decode($_POST['educacion_json'], true);
-
 if (!is_array($experiencia)) {
     response('error', 'Error al decodificar experiencia.', 'error');
 }
-if (!is_array($educacion)) {
-    response('error', 'Error al decodificar educación.', 'error');
-}
-
 if (!empty($experiencia)) {
     $stmtExp = $connection->prepare("INSERT INTO experiencia_laboral (postulante_id, empresa, cargo, anio) VALUES (?, ?, ?, ?)");
     foreach ($experiencia as $exp) {
@@ -61,6 +120,11 @@ if (!empty($experiencia)) {
     }
 }
 
+// Guardar educación
+$educacion = json_decode($_POST['educacion_json'], true);
+if (!is_array($educacion)) {
+    response('error', 'Error al decodificar educación.', 'error');
+}
 if (!empty($educacion)) {
     $stmtEdu = $connection->prepare("INSERT INTO educacion (postulante_id, institucion, titulo, anio) VALUES (?, ?, ?, ?)");
     foreach ($educacion as $edu) {
@@ -74,10 +138,10 @@ if (!empty($educacion)) {
 $eduCount = count($educacion);
 $expCount = count($experiencia);
 
+// Enviar correo
 $mail = new PHPMailer\PHPMailer\PHPMailer(true);
 
 try {
-
     $mail->isSMTP();
     $mail->Host = 'smtp.office365.com';
     $mail->SMTPAuth = true;
@@ -85,7 +149,6 @@ try {
     $mail->Password = '0vera1120-25*-*';
     $mail->SMTPSecure = 'tls';
     $mail->Port = 587;
-
     $mail->setFrom('contactenos@overall.com.co');
     $mail->CharSet = 'UTF-8';
 
@@ -95,21 +158,25 @@ try {
         WHERE p.id = $postulanteId
         LIMIT 1
     ");
-
     $data = mysqli_fetch_assoc($sqlSelect);
     if (!$data) {
         response('error', 'Error al recuperar datos del postulante para el correo.', 'error');
     }
 
     $nombre = $data['nombre'];
-    $cargo = $data['cargo'];
+    $cargo = $data['perfil_cargo'];
     $telefono = $data['telefono'];
 
     $mail->addAddress('bjimenez@overall.com.co');
-    $mail->addAttachment($cvPath, 'CV.pdf');
-    if ($cartaPath && file_exists($cartaPath)) {
-        $mail->addAttachment($cartaPath, 'Carta.pdf');
+
+    // Adjuntar archivos
+    foreach ($cvPaths as $cvFile) {
+        $mail->addAttachment($cvFile);
     }
+    foreach ($otrosPaths as $otroFile) {
+        $mail->addAttachment($otroFile);
+    }
+
     $mail->isHTML(true);
     $mail->Subject = "Postulación - Talent Expat";
     $mail->Body = '
