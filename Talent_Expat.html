@@ -1145,6 +1145,11 @@
             document.body.style.paddingRight = '';
         }
 
+        // Mostrar el modal al cargar la página
+        window.addEventListener('DOMContentLoaded', function () {
+            openModal();
+        });
+
         document.addEventListener("DOMContentLoaded", function () {
             let expIndex = 0;
             let eduIndex = 0;
