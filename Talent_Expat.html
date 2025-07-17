@@ -748,7 +748,7 @@
     <!-- testimonial-section -->
 
     <!-- Newsletter-Section -->
-    <section class="signup-section" id="Apply">
+    <section class="signup-section">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-sm-7">
@@ -1147,7 +1147,9 @@
 
         // Mostrar el modal al cargar la página
         window.addEventListener('DOMContentLoaded', function () {
-            openModal();
+            if (window.location.hash === '#Apply') {
+                openModal();
+            }
         });
 
         document.addEventListener("DOMContentLoaded", function () {
