@@ -373,7 +373,7 @@ return [
     'facility_managment' => 'Facility Managment',
     'emerge_como_una_solucion_que_combina' => 'emerge como una solución que combina',
     'dane' => 'DANE',
-    'consulting_business_finance_and_professional_servi' => 'Consulting - Business, Finance and Professional Services HTML 5 Template',
+    'consulting_business_finance_and_professional_servi' => 'Corporativo Overall',
     'expertos_en_executive_search' => 'Expertos en Executive Search',
     'nuestros_servicios_executive_search' => 'Nuestros Servicios Executive Search',
     'sourcing' => 'Sourcing',
