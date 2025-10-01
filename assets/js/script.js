@@ -244,6 +244,18 @@ jQuery(function ($) {
         $("#accordion").accordion();
     }
 
+    $("#accordion-left").accordion({
+        collapsible: true,
+        active: false,
+        heightStyle: "content"
+    });
+
+    $("#accordion-right").accordion({
+        collapsible: true,
+        active: false,
+        heightStyle: "content"
+    });
+
 
 
 
@@ -345,7 +357,7 @@ jQuery(function ($) {
         });
     }
 
-        // -------------------------------------------------------------
+    // -------------------------------------------------------------
     //      Team-Carousel-sector-Slider
     // -------------------------------------------------------------
 
