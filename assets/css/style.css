@@ -7590,8 +7590,22 @@ select {
   background-size: cover;
 }
 
-.about-Company-Section .container {
-  width: 1670px
+@media (min-width:768px) {
+  .about-Company-Section .container {
+    width: 750px
+  }
+}
+
+@media (min-width:992px) {
+  .about-Company-Section .container {
+    width: 970px
+  }
+}
+
+@media (min-width:1200px) {
+  .about-Company-Section .container {
+    width: 1670px
+  }
 }
 
 .about-Company-Section .section-title {
@@ -7945,7 +7959,7 @@ select {
 }
 
 .about-Company-Section .quote-section p {
-font-size: 13px;
+  font-size: 13px;
 }
 
 .about-Company-Section .quote-section .contact-form .form-group .btn:before {
@@ -7967,9 +7981,9 @@ font-size: 13px;
   background-size: cover;
 }
 
-.about-Company-tow-Section .container {
+/* .about-Company-tow-Section .container {
   width: 1170px
-}
+} */
 
 .about-Company-tow-Section .section-title {
   margin-bottom: 100px;
