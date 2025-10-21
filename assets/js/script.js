@@ -421,6 +421,33 @@ jQuery(function ($) {
         });
     }
 
+    if ($('.finance-carousel-tow').length) {
+        $('.finance-carousel-tow').owlCarousel({
+            loop: true,
+            autoplay: false,
+            autoplayTimeout: 9000,
+            margin: 20,
+            nav: true,
+            dots: false,
+            navText: ["<i class='fa fa-chevron-left'></i>", "<i class='fa fa-chevron-right'></i>"],
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: true,
+                    dots: false,
+                },
+                600: {
+                    items: 2,
+                    nav: true,
+                    dots: false,
+                },
+                1000: {
+                    items: 3
+                }
+            }
+        });
+    }
+
 
     if ($('.finance-carousel-search').length) {
         $('.finance-carousel-search').owlCarousel({
