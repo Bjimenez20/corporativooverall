@@ -1864,6 +1864,7 @@ select {
   border-radius: 0;
   padding: 11px 55px !important;
   margin: 0 2px !important;
+  text-align: center !important;
 }
 
 @media only screen and (max-width: 991px) {
