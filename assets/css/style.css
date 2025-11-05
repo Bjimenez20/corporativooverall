@@ -420,7 +420,7 @@ button,
 }
 
 .section-padding {
-  padding: 50px 0;
+  padding: 20px 0;
 }
 
 .section-padding-client {
@@ -2040,11 +2040,11 @@ select {
 /* =========================================================
         Counting-Section STYLE 
 ============================================================ */
-.counting-section {
+/* .counting-section {
   background: url(../images/counter-bg.jpg) no-repeat center;
   background-size: cover;
   background-attachment: fixed;
-}
+} */
 
 @media only screen and (max-width: 991px) {
   .counting-section {
@@ -5902,7 +5902,7 @@ select {
 
 .signup-section .caption img {
   max-width: 100%;
-  margin-top: -60px;
+  margin-top: -20px;
 }
 
 /* =========================================================
@@ -7857,7 +7857,7 @@ select {
 }
 
 .right-choice-section .section-title {
-  margin-bottom: 65px;
+  margin-bottom: 25px;
 }
 
 @media only screen and (max-width: 767px) {
@@ -7873,7 +7873,7 @@ select {
 }
 
 .right-choice-section .section-wrapper {
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 }
 
 .right-choice-section .section-wrapper .caption {
@@ -7990,7 +7990,7 @@ select {
 
 .right-choice-section .section-wrapper .content {
   box-shadow: 0 0 15px #e2e2e2;
-  padding: 15px 30px 12px;
+  padding: 15px 15px 6px;
 }
 
 @media only screen and (max-width: 991px) {
