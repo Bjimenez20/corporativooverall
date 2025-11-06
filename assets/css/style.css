@@ -92,10 +92,10 @@ a,
   transition: 0.5s;
 }
 
-.tp-leftarrow,
+/* .tp-leftarrow,
 .tp-rightarrow {
   display: none !important;
-}
+} */
 
 .titulo-slider,
 .titulo-white {
@@ -1782,8 +1782,6 @@ select {
   line-height: 68px !important;
   color: #FFFFFF;
   margin: 14px 0 15px !important;
-  top: -50px !important;
-  left: 160px !important;
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
@@ -1810,27 +1808,11 @@ select {
   }
 }
 
-@media only screen and (max-width: 479px) {
-  .slider-section #rev_slider_1 .font-extra-bold {
-    font-size: 20px !important;
-    line-height: 60px !important;
-    margin: 40px 0 40px !important;
-    top: -60px !important;
-    left: 75px !important;
-  }
-
-  .slider-section #rev_slider_1 .font-extra-bold h1 {
-    font-size: 20px !important;
-  }
-}
-
 .slider-section #rev_slider_1 .font-medium {
-  font-size: 20px !important;
+  font-size: 18px !important;
   font-weight: 500 !important;
   line-height: 30px !important;
   color: #FFFFFF !important;
-  top: -70px !important;
-  left: 160px !important;
 }
 
 .slider-section #rev_slider_1 .font-medium.text-center {
@@ -1847,24 +1829,17 @@ select {
 
 @media only screen and (max-width: 479px) {
   .slider-section #rev_slider_1 .font-medium {
-    font-size: 8.999px !important;
+    font-size: 11px !important;
     margin: 30px 0 9px !important;
-    top: -70px !important;
-    left: 75px !important;
 
-    /* white-space: inherit !important;
-    word-wrap: break-word !important;
-    overflow-wrap: break-word !important;
-    max-width: 90% !important; */
   }
 }
 
 .slider-section #rev_slider_1 .btn {
-  font-size: 16px !important;
+  font-size: 18px !important;
   border-radius: 0;
   padding: 11px 55px !important;
   margin: 0 2px !important;
-  text-align: center !important;
 }
 
 @media only screen and (max-width: 991px) {
@@ -1877,9 +1852,8 @@ select {
 @media only screen and (max-width: 767px) {
   .slider-section #rev_slider_1 .btn {
     padding: 10px 25px !important;
-    font-size: 8px !important;
-    top: 10px !important;
-    left: -75px !important;
+    font-size: 12px !important;
+    top: 15px !important;
   }
 }
 
@@ -1899,21 +1873,6 @@ select {
 @media only screen and (max-width: 479px) {
   .slider-section #rev_slider_1 .btn {
     font-size: 15 !important;
-    width: 190px !important;
-  }
-}
-
-@media only screen and (max-width: 479px) {
-  .slider-btn-left {
-    display: inline-block !important;
-    text-align: left !important;
-    width: 190px !important;
-    padding: 14px 20px !important;
-    border-radius: 8px !important;
-    font-weight: 600 !important;
-    font-size: 15px !important;
-    white-space: normal !important;
-    word-wrap: break-word !important;
   }
 }
 
