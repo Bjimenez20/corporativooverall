@@ -420,7 +420,7 @@ button,
 }
 
 .section-padding {
-  padding: 20px 0;
+  padding: 40px 0;
 }
 
 .section-padding-client {
@@ -2057,8 +2057,8 @@ select {
 }
 
 .counting-section .counting-pusher .counting-wrapper .icon {
-  width: 73px;
-  height: 73px;
+  width: 85px;
+  height: 90px;
   text-align: center;
   border: 4px solid #fff;
 }
@@ -2076,7 +2076,7 @@ select {
 }
 
 .counting-section .counting-pusher .counting-wrapper .icon img {
-  padding: 5px;
+  padding: 15px;
 }
 
 .counting-section .counting-pusher .counting-wrapper .content {
